@@ -13,12 +13,17 @@ code {
     monospace;
 }
 
+.App{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .gallery {
   margin-top: 2em;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
   width: 100vw;
 }
 
@@ -30,18 +35,40 @@ code {
 
 .infoCards {
   display: flex;
+  flex-wrap: wrap;
   margin-top:2em;
-  width: 100vw;
+  width: 90vw;
   justify-content: center;
   align-content: center;
+  background-color: rgb(228, 238, 235);
 }
 
 .getInfo{
   padding: 2em;
-  height: 10em;
-  width: 10em;
+  height: 15em;
+  width: 12em;
   border: 1px solid black;
-  margin-left: 1em;
+  margin: 3em 3em;
+  background-color: white;
+  border-radius: 1em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.aboutCards {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top:1em;
+  width: 90vw;
+  justify-content: center;
+  align-content: center;
+  background-color: rgb(140, 130, 163);
+}
+
+.getAbout{
+  padding: 2em;
+  height: 5em;
+  width: 27em;
+  border: 1px solid black;
+  margin: 1em 2em;
   background-color: white;
   border-radius: 1em;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
