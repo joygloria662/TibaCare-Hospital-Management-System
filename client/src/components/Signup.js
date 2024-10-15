@@ -1,8 +1,12 @@
-import React, { act } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { Link } from "react-router-dom";
 
 function Signup() {
+    const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState('');
+
     const passRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
     const basicSchema = yup.object().shape({
@@ -34,86 +38,122 @@ function Signup() {
             password: '',
             confirmPassword: ''
         },
+        validationSchema: basicSchema,
+
         onSubmit: async (values, actions) => {
-            await new Promise((resolve)=> setTimeout(resolve, 1000))
-            actions.resetForm()
+            setLoading(true)
+            try {
+                const response = await fetch('http://localhost:5000/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(values)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to submit the form')
+                }
+
+                const data = await response.json();
+                setMessage(data.message)
+                actions.resetForm()
+            } catch (error) {
+                setMessage(error.message);
+            } finally {
+                setLoading(false)
+            }
         },
-        validationSchema: basicSchema
     });
 
-    console.log(errors);
+    useEffect(() => {
+        if (message) {
+            const timer = setTimeout(() => setMessage(''), 5000);
+            return () => clearTimeout(timer)
+        }
+    }, [message])
 
     return (
-        <form className="signupForm" onSubmit={handleSubmit}>
-            <input
-                type="text"
-                name="firstName"
-                placeholder="First Name"
-                value={values.firstName}
-                onChange={handleChange}
-                onBlur={handleBlur}
-            />
-            <input
-                type="text"
-                name="lastName"
-                placeholder="Last Name"
-                value={values.lastName}
-                onChange={handleChange}
-                onBlur={handleBlur}
-            />
-            <input
-                type="text"
-                name="email"
-                placeholder="Email"
-                value={values.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className={errors.email && touched.email ? "inputError" : ""}
-            />
-            {errors.email && touched.email && <p className="errors">{errors.email}</p>}
-            <input
-                type="text"
-                name="age"
-                placeholder="Age"
-                value={values.age}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className={errors.age && touched.age? "inputError" : ""}
-            />
-            {errors.age && touched.age && <p className="errors">{errors.age}</p>}
-            <select
-                name="role"
-                value={values.role}
-                onChange={handleChange}
-            >
-                <option>Doctor</option>
-                <option>Patient</option>
-            </select>
-            <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={values.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className={errors.password  && touched.password ? "inputError" : ""}
-            />
-            {errors.password && touched.password && <p className="errors">{errors.password}</p>}
-            <input
-                type="password"
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                value={values.confirmPassword}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className={errors.confirmPassword && touched.confirmPassword ? "inputError" : ""}
-            />
-            {errors.confirmPassword && touched.confirmPassword && <p className="errors">{errors.confirmPassword}</p>}
-            <div className="signupButtons">
-                <button disabled={isSubmitting} type="submit">SIGNUP</button>
-                <button type="button">CANCEL</button>
-            </div>
-        </form>
+        <div>
+        <div className="signup">
+            <h1>Signup</h1>
+            <form className="signupForm" onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    name="firstName"
+                    placeholder="First Name"
+                    value={values.firstName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                />
+                <input
+                    type="text"
+                    name="lastName"
+                    placeholder="Last Name"
+                    value={values.lastName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                />
+                <input
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={errors.email && touched.email ? "inputError" : ""}
+                />
+                {errors.email && touched.email && <p className="errors">{errors.email}</p>}
+                <input
+                    type="text"
+                    name="age"
+                    placeholder="Age"
+                    value={values.age}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={errors.age && touched.age ? "inputError" : ""}
+                />
+                {errors.age && touched.age && <p className="errors">{errors.age}</p>}
+                <select
+                    name="role"
+                    value={values.role}
+                    onChange={handleChange}
+                >
+                    <option>Doctor</option>
+                    <option>Patient</option>
+                </select>
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={errors.password && touched.password ? "inputError" : ""}
+                />
+                {errors.password && touched.password && <p className="errors">{errors.password}</p>}
+                <input
+                    type="password"
+                    name="confirmPassword"
+                    placeholder="Confirm Password"
+                    value={values.confirmPassword}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={errors.confirmPassword && touched.confirmPassword ? "inputError" : ""}
+                />
+                {errors.confirmPassword && touched.confirmPassword && <p className="errors">{errors.confirmPassword}</p>}
+                <div className="signupButtons">
+                    <button disabled={isSubmitting || loading} type="submit">
+                    {loading ? 'Submitting...' : 'SIGNUP'}
+                    </button>
+                    <Link to="/login" className="hero-link">
+                        <button type="button" className="cancelbtn">CANCEL</button>
+                    </Link>
+                </div>
+            </form>
+            {message && <p className="responseMessage">{message}</p>}
+        </div>
+        </div>
     );
 }
 
