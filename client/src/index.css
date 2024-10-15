@@ -23,9 +23,8 @@ code {
 }
 
 .galleryImage {
-  width: 90vw;
-  height: 60vh;
-  border-radius: 8px;
+  width: 100vw;
+  height: 80vh;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
