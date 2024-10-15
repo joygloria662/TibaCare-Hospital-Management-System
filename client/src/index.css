@@ -7,18 +7,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(51, 36, 47);
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
 .App{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .gallery {
   margin-top: 2em;
   display: flex;
@@ -26,14 +23,12 @@ code {
   flex-wrap: wrap;
   width: 100vw;
 }
-
 .galleryImage {
   width: 100vw;
   height: 80vh;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
-.infoCards {
+.infoItems {
   display: flex;
   flex-wrap: wrap;
   margin-top:2em;
@@ -42,8 +37,16 @@ code {
   align-content: center;
   background-color: rgb(228, 238, 235);
 }
-
+.infoCards {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  align-content: center;
+}
 .getInfo{
+  display: flex;
+  flex-direction: column;
   padding: 2em;
   height: 15em;
   width: 12em;
@@ -52,8 +55,9 @@ code {
   background-color: white;
   border-radius: 1em;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  justify-content: center;
 }
-.aboutCards {
+.aboutItems{
   display: flex;
   flex-wrap: wrap;
   margin-top:1em;
@@ -62,8 +66,24 @@ code {
   align-content: center;
   background-color: rgb(140, 130, 163);
 }
-
+.aboutCards {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top:1em;
+  justify-content: center;
+}
+.aboutCards h3{
+  padding-right: 1em;
+}
+.aboutItems h1{
+  text-decoration: underline;
+}
+.infoItems h1{
+  text-decoration: underline;
+}
 .getAbout{
+  display: flex;
+  align-items: center;
   padding: 2em;
   height: 5em;
   width: 27em;
