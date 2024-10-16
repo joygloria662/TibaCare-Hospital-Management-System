@@ -489,3 +489,80 @@ p {
 .profile-button:hover {
   background-color: #014074; /* Darker blue on hover */
 }
+
+.header {
+  display: flex;
+  justify-content: space-between; /* Space between logo and auth actions */
+  align-items: center; /* Align items vertically */
+  background-color: #00569e; /* Main blue */
+  color: white;
+  padding: 15px 30px;
+}
+
+.logo {
+  display: flex;
+  align-items: center; /* Align logo and text vertically */
+}
+
+.logo img {
+  height: 50px;
+  margin-right: 10px; /* Space between logo and text */
+}
+
+.logo-text {
+  font-size: 12px; /* Small text size */
+  color: #fdfdfd; /* Darker text color for contrast */
+  font-weight: 300; /* Light weight for subtle appearance */
+}
+
+.navbar {
+  display: flex; /* Use flexbox for navbar */
+  align-items: center; /* Center nav items vertically */
+  margin-left: 20px; /* Space between logo and navbar */
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  margin: 0; /* Reset margin */
+  padding: 0; /* Reset padding */
+}
+
+.navbar ul li {
+  margin-right: 20px;
+}
+
+.navbar ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar ul li a:hover {
+  color: #145da0; /* Lighter blue on hover */
+}
+
+.auth-actions {
+  display: flex; /* Use flexbox for auth actions */
+  align-items: center; /* Center auth buttons vertically */
+}
+
+.auth-actions button {
+  background-color: #1976D2; /* Lighter blue */
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  margin-left: 10px; /* Space between buttons */
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.auth-actions button:hover {
+  background-color: #1565C0; /* Slightly darker blue */
+}
+
+/* Optional: Adjust button text color when using link */
+.auth-actions button aac {
+  text-decoration: none;
+  color: white;
+}

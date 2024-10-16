@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Header from './Header';
 
 const DoctorProfile = () => {
   const { doctorId } = useParams(); // Get doctor ID from the URL
@@ -40,6 +41,7 @@ const DoctorProfile = () => {
 
   return (
     <div className="doctor-profile-page">
+        <Header/>
       <div className="profile-card">
         <img src={doctor.imageUrl} alt={doctor.name} className="profile-img" />
         <h2>{doctor.name}</h2>
