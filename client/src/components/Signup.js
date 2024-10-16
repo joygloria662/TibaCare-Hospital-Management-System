@@ -30,8 +30,8 @@ function Signup() {
 
     const { values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues: {
-            firstName: '',
-            lastName: '',
+            firstname: '',
+            lastname: '',
             email: '',
             age: '',
             role: 'Doctor',
@@ -43,7 +43,7 @@ function Signup() {
         onSubmit: async (values, actions) => {
             setLoading(true)
             try {
-                const response = await fetch('http://localhost:5000/signup', {
+                const response = await fetch('/signup', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -80,7 +80,7 @@ function Signup() {
             <form className="signupForm" onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    name="firstName"
+                    name="firstname"
                     placeholder="First Name"
                     value={values.firstName}
                     onChange={handleChange}
@@ -88,7 +88,7 @@ function Signup() {
                 />
                 <input
                     type="text"
-                    name="lastName"
+                    name="lastname"
                     placeholder="Last Name"
                     value={values.lastName}
                     onChange={handleChange}

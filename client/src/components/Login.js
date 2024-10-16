@@ -1,4 +1,4 @@
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as yup from 'yup';
@@ -8,52 +8,48 @@ import * as yup from 'yup';
 function Login() {
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
-    const [users, setUsers] = useState(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        fetch(``)
-            .then((resp) => resp.json())
-            .then((data) => setUsers(data));
-    }, []);
-
     const loginSchema = yup.object().shape({
-        username: yup.string().required('Username is required'),
+        email: yup.string().email("Invalid email format").required('Email is required'),
         password: yup.string().required('Username is required')
     });
 
     const { values, errors, touched, isSubmitting, handleChange, handleBlur, handleSubmit } = useFormik({
         initialValues: {
-            username: "",
+            email: "",
             password: "",
         },
         validationSchema: loginSchema,
         onSubmit: async (values) => {
             setLoading(true);
             try {
-                const authenticated = users.find(
-                    (user) =>
-                        user.username === values.username &&
-                        user.password === values.password
-                );
+                const response = await fetch(`/login`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(values)
+                });
 
-                if (authenticated) {
-                    setMessage("Login Successful")
+                if (response.ok) {
+                    const data = await response.json();
+                    setMessage("Login Successful");
 
-                    if (authenticated.role === 'Doctor'){
-                        navigate('/doctordashboard');
-                    }else if(authenticated.role === "Patient") {
-                        navigate('/patientdashboard');
+                    if (data.data.role === "Doctor") {
+                        navigate("/doctordashboard");
+                    } else if (data.data.role === "Patient") {
+                        navigate("/patientdashboard");
                     }
                 } else {
-                    setMessage("Invalid username or password")
+                    setMessage("Invalid username or password");
                 }
             } catch (error) {
-                setMessage("An error occurred during logging in")
+                setMessage("An error occurred during login");
             } finally {
-                setLoading(false)
+                setLoading(false);
             }
-        }
+        },
     });
 
     useEffect(() => {
@@ -74,14 +70,14 @@ function Login() {
                 <form onSubmit={handleSubmit}>
                     <input
                         type="text"
-                        placeholder="Username"
-                        name="username"
-                        value={values.username}
+                        placeholder="Email"
+                        name="email"
+                        value={values.email}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        className={errors.username && touched.username ? "inputError" : ""}
+                        className={errors.email && touched.email ? "inputError" : ""}
                     />
-                    {errors.username && touched.username && <p className="errors">{errors.username}</p>}
+                    {errors.email && touched.email && <p className="errors">{errors.email}</p>}
 
                     <input
                         type="password"
