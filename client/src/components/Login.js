@@ -37,9 +37,9 @@ function Login() {
                     setMessage("Login Successful");
 
                     if (data.data.role === "Doctor") {
-                        navigate("/doctordashboard");
+                        navigate("/departments");
                     } else if (data.data.role === "Patient") {
-                        navigate("/patientdashboard");
+                        navigate("/");
                     }
                 } else {
                     setMessage("Invalid username or password");
