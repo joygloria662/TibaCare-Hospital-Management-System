@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Header from './Header';
+import { AuthProvider, useAuth } from './AuthContext'; // Import AuthProvider
+import Navbar from './Navbar';
 
 const Departments = () => {
   const departments = [
@@ -24,7 +25,7 @@ const Departments = () => {
 
   return (
     <div className="departments-page">
-      <Header/>
+      <Navbar/>
       <h2>Hospital Departments</h2>
       <div className="departments-grid">
         {departments.map(department => (
@@ -48,4 +49,10 @@ const Departments = () => {
   );
 };
 
-export default Departments;
+const WrappedDept = () => (
+  <AuthProvider>
+      <Departments />
+  </AuthProvider>
+);
+
+export default WrappedDept;

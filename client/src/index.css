@@ -119,7 +119,7 @@ code {
   border: 1px solid #cccccc; 
   border-radius: 10px;
   font-size: 16px;
-  background-color: #fdfdfd; /* White-ish */
+  background-color: #fdfdfd; 
   box-shadow: 0 5px 10px rgba(0, 123, 255, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -131,7 +131,7 @@ code {
 }
 .signupForm input.inputError, 
 .signupForm select.inputError {
-  border-color: orangered; /* Error red */
+  border-color: orangered; 
 }
 .signupForm input:focus,
 .signupForm select:focus,
@@ -221,54 +221,48 @@ button:disabled {
 .login p a:hover {
     text-decoration: underline;
 }
-@media (max-width: 600px) {
-    .login {
-        width: 90%;
-        padding: 20px;
-    }
-}
 
 .departments-page {
   padding: 20px;
-  background-color: #E3F2FD; /* Light blue background */
+  background-color: #E3F2FD; 
 }
 
 .departments-page h2 {
-  color: #00569e; /* Main blue color */
+  color: #00569e; 
   text-align: center;
 }
 
 .departments-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Increase min width for larger cards */
-  gap: 20px; /* Increase space between grid items */
-  margin-top: 20px; /* Space above the grid */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+  gap: 20px; 
+  margin-top: 20px; 
 }
 
 .department-card {
-  background-color: #fdfdfd; /* White background for cards */
-  border: 1px solid #cccccc; /* Light grey border */
-  border-radius: 5px; /* Rounded corners */
-  overflow: hidden; /* Clip the image if it overflows */
-  text-align: center; /* Center text */
-  transition: transform 0.2s; /* Smooth hover effect */
-  padding: 10px; /* Add padding to give more space inside the card */
+  background-color: #fdfdfd; 
+  border: 1px solid #cccccc; 
+  border-radius: 5px; 
+  overflow: hidden; 
+  text-align: center; 
+  transition: transform 0.2s; 
+  padding: 10px; 
 }
 
 .department-card:hover {
-  transform: scale(1.05); /* Slightly scale up on hover */
+  transform: scale(1.05); 
 }
 
 .department-card img {
-  width: 100%; /* Make the image fill the card */
-  height: 200px; /* Set a larger height for the images */
-  object-fit: cover; /* Crop the image to fit the container */
+  width: 100%; 
+  height: 200px; 
+  object-fit: cover; 
 }
 
 .department-card h3 {
-  margin: 15px 0; /* Increase space above and below the title */
-  color: #014074; /* Darker blue for text */
-  font-size: 1.2rem; /* Slightly larger font size */
+  margin: 15px 0; 
+  color: #014074; 
+  font-size: 1.2rem; 
 }
 
 .doctors-page {
@@ -287,8 +281,8 @@ button:disabled {
   background-color: #e9e9e9;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px; /* Slightly larger card width */
-  margin: 20px; /* Space between cards */
+  width: 300px; 
+  margin: 20px; 
   padding: 20px;
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -301,11 +295,11 @@ button:disabled {
 
 .doctor-card img {
   width: 100%;
-  height: 250px; /* Increased height to improve image proportions */
-  object-fit: cover; /* Ensures the image fills the area without distorting */
-  object-position: top; /* Prioritize top of image to avoid cutting heads */
+  height: 250px; 
+  object-fit: cover; 
+  object-position: top; 
   border-radius: 10px;
-  background-color: #cccccc; /* Fallback background color */
+  background-color: #cccccc; 
 }
 
 .doctor-card h3 {
@@ -450,7 +444,7 @@ p {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.7); /* Black-ish transparent overlay */
+  background: rgba(0, 0, 0, 0.7); 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -458,7 +452,7 @@ p {
 }
 
 .modal-content {
-  background-color: #ffffff; /* White modal content */
+  background-color: #ffffff; 
   padding: 40px;
   border-radius: 10px;
   width: 500px;
@@ -472,13 +466,13 @@ p {
   right: 20px;
   font-size: 30px;
   font-weight: bold;
-  color: #000000; /* Black color for the close button */
+  color: #000000; 
   cursor: pointer;
 }
 
 .profile-button {
-  background-color: #145da0; /* Main blue color */
-  color: #ffffff; /* White text */
+  background-color: #145da0; 
+  color: #ffffff; 
   padding: 12px 20px;
   border: none;
   border-radius: 5px;
@@ -487,45 +481,58 @@ p {
 }
 
 .profile-button:hover {
-  background-color: #014074; /* Darker blue on hover */
+  background-color: #014074; 
 }
 
-.header {
-  display: flex;
-  justify-content: space-between; /* Space between logo and auth actions */
-  align-items: center; /* Align items vertically */
-  background-color: #00569e; /* Main blue */
-  color: white;
-  padding: 15px 30px;
+.Navbar {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100vw; 
+  background-color: #00569e; 
+  z-index: 1000; 
+  padding: 1rem; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  margin: 0; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+.nav-container{
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  
+  width:90%;
 }
 
 .logo {
   display: flex;
-  align-items: center; /* Align logo and text vertically */
+  align-items: center; 
 }
 
 .logo img {
   height: 50px;
-  margin-right: 10px; /* Space between logo and text */
+  margin-right: 10px; 
 }
 
 .logo-text {
-  font-size: 12px; /* Small text size */
-  color: #fdfdfd; /* Darker text color for contrast */
-  font-weight: 300; /* Light weight for subtle appearance */
+  font-size: 12px; 
+  color: #fdfdfd; 
+  font-weight: 300; 
 }
 
 .navbar {
-  display: flex; /* Use flexbox for navbar */
-  align-items: center; /* Center nav items vertically */
-  margin-left: 20px; /* Space between logo and navbar */
+  display: flex; 
+  align-items: center; 
+  margin-left: 20px; 
 }
 
 .navbar ul {
   display: flex;
   list-style: none;
-  margin: 0; /* Reset margin */
-  padding: 0; /* Reset padding */
+  margin: 0; 
+  padding: 0; 
 }
 
 .navbar ul li {
@@ -539,30 +546,57 @@ p {
 }
 
 .navbar ul li a:hover {
-  color: #145da0; /* Lighter blue on hover */
+  color: black
 }
 
 .auth-actions {
-  display: flex; /* Use flexbox for auth actions */
-  align-items: center; /* Center auth buttons vertically */
+  display: flex; 
+  align-items: center; 
 }
 
 .auth-actions button {
-  background-color: #1976D2; /* Lighter blue */
+  background-color: #1976D2; 
   border: none;
   color: white;
   padding: 10px 15px;
-  margin-left: 10px; /* Space between buttons */
+  margin-left: 10px; 
   cursor: pointer;
   border-radius: 4px;
 }
 
 .auth-actions button:hover {
-  background-color: #1565C0; /* Slightly darker blue */
+  background-color: #1565C0; 
 }
 
-/* Optional: Adjust button text color when using link */
+
 .auth-actions button aac {
   text-decoration: none;
   color: white;
 }
+.auth-link {
+  margin-left: 10px; 
+  color: #000000; 
+  text-decoration: none;
+}
+
+.auth-link:hover {
+  text-decoration: underline; 
+}
+
+.user-greeting {
+  margin-right: 10px;
+  color: white; 
+}
+
+@media (max-width: 720px) {
+  .logo-text {
+    display: None;
+  }
+  .auth-actions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+}
+
