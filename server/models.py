@@ -1,3 +1,4 @@
+
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_serializer import SerializerMixin as sm
 import datetime 
@@ -76,9 +77,4 @@ def __repr__(self):
 
 #appointments = db.relationship("Appointment", back_populates="doctor")
 #department = db.relationship("Department", back_populates="doctors")
-#patients = association_proxy("appointments", "patient", creator=lambda patient_obj: Appointment(patient=patient_obj))
-
-
-
-
-
+#patients = association_proxy("appointments", "patient", creator=lambda patient_obj: Appointment(patient=patient_obj

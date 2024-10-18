@@ -4,7 +4,7 @@ import { AuthProvider, useAuth } from './AuthContext'; // Import AuthProvider
 import Gallery from './Gallery';
 import InfoCards from './InfoCards';
 import Navbar from './Navbar';
-import Navbar from './Navbar';
+import About from './About'; // Import About component
 
 const images = [
     { url: 'https://img.freepik.com/free-photo/african-american-doctor-patient-doing-consultation_482257-20161.jpg?semt=ais_hybrid', alt: 'xray' },
@@ -21,6 +21,7 @@ function App() {
             <div className='App'>
                 <Gallery images={images} />
                 <InfoCards />
+                <About /> {/* Render About component */}
             </div>
         </>
     );
@@ -33,3 +34,4 @@ const WrappedApp = () => (
 );
 
 export default WrappedApp;
+
