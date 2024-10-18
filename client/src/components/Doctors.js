@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import Header from './Header';
+import Navbar from './Navbar';
 
 const Doctors = () => {
   const { departmentId } = useParams();
@@ -128,7 +128,7 @@ const Doctors = () => {
 
   return (
     <div className="doctors-page">
-        <Header/>
+        <Navbar/>
       <h2>Doctors in Department</h2>
       
       <div className="doctor-cards">

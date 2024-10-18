@@ -24,7 +24,7 @@ with app.app_context():
             email = fake.email(),
             age = random.randint(18, 70),
             role = random.choice(roles),
-            _password_hash = bcrypt.generate_password_hash(fake.word()).decode('utf-8')
+            password = bcrypt.generate_password_hash(fake.word()).decode('utf-8')
         )
         
         users.append(user)

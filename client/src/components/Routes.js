@@ -1,10 +1,12 @@
 import React from "react";
 import App from "./App";
-import Signup from "./Signup";
+// import Signup from "./PatientSignup";
 import Login from "./Login";
 import Departments from "./Departments";
 import Doctors from "./Doctors";
 import DoctorProfile from "./DoctorProfile";
+import DoctorSignup from "./DoctorSignup";
+import DoctorLogin from "./DoctorLogin";
 
 const routes = [
     {
@@ -12,16 +14,20 @@ const routes = [
         element: <App />
     },
     {
-        path: '/signup',
-        element: <Signup />
+        path: '/drsignup',
+        element: <DoctorSignup />
     },
     {
-        path: '/login',
-        element: <Login />
+        path: '/drlogin',
+        element: <DoctorLogin />
     },
     {
         path: "/departments",
         element: <Departments />
+    },
+    {
+        path: '/login',
+        element: <Login />
     },
     {
         path: "/departments/:departmentId", 
@@ -30,8 +36,7 @@ const routes = [
     {
         path: "/doctors/:doctorId/profile",
         element: <DoctorProfile />
-    }
-
+    },
 ]
 
 
