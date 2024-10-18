@@ -3,8 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 
 function Navbar() {
-
-  const { user, setUser } = useAuth()
+  const { user, role, setUser } = useAuth();
 
   const handleLogout = () => {
     fetch("/logout", {
@@ -39,8 +38,13 @@ function Navbar() {
           {user ? (
             <>
               <h5 className="user-greeting">Hello, {user.first_name}</h5>
+              {role === 'doctor' && (
+                <button><NavLink to="/doctor-dashboard" className="auth-button">Doctor Dashboard</NavLink></button>
+              )}
+              {role === 'patient' && (
+                <NavLink to="/patient-dashboard" className="auth-button">Patient Dashboard</NavLink>
+              )}
               <button onClick={handleLogout} className="auth-button">Logout</button>
-              <button className="auth-button">Book Appointment</button>
             </>
           ) : (
             <>

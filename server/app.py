@@ -1,12 +1,9 @@
-from flask import Flask, request, session, jsonify, current_app, url_for
-from flask_migrate import Migrate
-from flask_bcrypt import Bcrypt
-from flask import Flask, request, session, jsonify, current_app, url_for
+from flask import Flask, request, session, make_response, current_app, url_for
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from flask_restful import Api, Resource
 from flask_cors import CORS
-from models import db, Doctor
+from models import db, Doctor, Department, Patient, Appointment
 from werkzeug.utils import secure_filename
 import os
 
@@ -49,8 +46,9 @@ class DoctorSignup(Resource):
             bio=data.get('bio'),
             education=data.get('education'),
             certifications=data.get('certifications'),
-            achievements=data.get('achievements'),
-            image=image_path,  # Store the image path
+            specialty=data.get('specialty'),
+            image=image_path,
+            department_id = data.get('department'),
             password=bcrypt.generate_password_hash(data.get('password')).decode('utf-8')
         )
 
@@ -69,11 +67,12 @@ class DoctorLogin(Resource):
 
         if doctor and bcrypt.check_password_hash(doctor.password, data['password']):
             session['user_id'] = doctor.id
+            session['user_role'] = 'doctor'
             return {
                 "message": "Login successful",
-                "data": doctor.to_dict(only=('id', 'title', 'first_name', 'last_name', 'email', 'bio', 'education', 'certifications', 'achievements', 'image')),
+                "data": doctor.to_dict(),
                 "status": 200
-            }, 200
+            }
         else:
             return {"error": "Invalid credentials"}, 401
 
@@ -86,20 +85,36 @@ class Logout(Resource):
 class CheckSession(Resource):
     def get(self):
         user_id = session.get('user_id')
+        user_role = session.get('user_role')
 
-        if user_id:
-            doctor = Doctor.query.get(user_id)
-            if doctor:
-                return doctor.to_dict(), 200
+        if user_id and user_role:
+            if user_role == 'doctor':
+                user = Doctor.query.get(user_id)
+            elif user_role == 'patient':
+                # user = Patient.query.get(user_id)
+                user = None  # Assume patient functionality will be added later
+            if user:
+                return {
+                    "user": user.to_dict(),
+                    "role": user_role  # Include user_role in the response
+                }, 200
             else:
                 return {"error": "User not found"}, 404
         return {"error": "Unauthorized"}, 401
+
+class DepartmentList(Resource):
+    def get(self):
+        departments_dict =[department.to_dict() for department in Department.query.all()]
+        
+        return make_response(departments_dict, 200)
+        
 
 
 api.add_resource(DoctorSignup, '/doctorsignup', endpoint='doctorsignup')
 api.add_resource(DoctorLogin, '/doctorlogin', endpoint='doctorlogin')
 api.add_resource(Logout, '/logout', endpoint=None)
 api.add_resource(CheckSession, '/check_session', endpoint='check_session')
+api.add_resource(DepartmentList, '/departments', endpoint='departments')
 
 
 if __name__ == "__main__":

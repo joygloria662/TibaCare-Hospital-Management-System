@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import PatientLogin from "./PatientLogin"; // Assuming you have a PatientLogin component
-import DoctorLogin from "./DoctorLogin"; // Assuming you have a DoctorLogin component
+import PatientLogin from "./PatientLogin"; 
+import DoctorLogin from "./DoctorLogin"; 
 
 function Login() {
-    const [isPatientLogin, setIsPatientLogin] = useState(true); // Default to PatientLogin
+    const [isPatientLogin, setIsPatientLogin] = useState(true); 
 
     const handlePatientLoginClick = () => {
-        setIsPatientLogin(true); // Show PatientLogin
+        setIsPatientLogin(true); 
     };
 
     const handleDoctorLoginClick = () => {
-        setIsPatientLogin(false); // Show DoctorLogin
+        setIsPatientLogin(false); 
     };
 
     return (

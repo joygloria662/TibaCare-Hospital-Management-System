@@ -10,7 +10,7 @@ function PatientLogin() {
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
-    const { user, setUser } = useAuth(); // Use context
+    const { setUser } = useAuth(); // Use context
 
     const loginSchema = yup.object().shape({
         email: yup.string().email("Invalid email format").required('Email is required'),

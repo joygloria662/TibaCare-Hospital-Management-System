@@ -1,15 +1,11 @@
 import React from "react";
 import App from "./App";
-// import Signup from "./PatientSignup";
 import Login from "./Login";
 import Departments from "./Departments";
-import Doctors from "./Doctors";
-import DoctorProfile from "./DoctorProfile";
 import PatientDashboard from './PatientDashboard'
-import PatientDetails from "./PatientDetails";
-import BookAppointment from "./BookAppointment";
+import About from "./About";
+import Contact from "./Contact";
 import DoctorSignup from "./DoctorSignup";
-import DoctorLogin from "./DoctorLogin";
 
 const routes = [
     {
@@ -17,8 +13,12 @@ const routes = [
         element: <App />
     },
     {
-        path: '/drsignup',
-        element: <DoctorSignup />
+        path: 'about',
+        element: <About />
+    },
+    {
+        path: 'contact',
+        element: <Contact />
     },
     {
         path: '/login',
@@ -33,25 +33,9 @@ const routes = [
         element: <Departments />
     },
     {
-        path: '/login',
-        element: <Login />
-    },
-    {
-        path: "/departments/:departmentId", 
-        element: <Doctors />
-    },
-    {
-        path: "/doctors/:doctorId/profile",
-        element: <DoctorProfile />
-    },
-    {
-        path : '/patient-details',
-        element : <PatientDetails/>
-    },
-    {
-        path: "/book-appointment/:id",
-        element: <BookAppointment />,
-      },
+        path: '/drsignup',
+        element: <DoctorSignup />
+    }
 ]
 
 

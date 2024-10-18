@@ -1,4 +1,3 @@
-// AuthContext.js
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 // Create the AuthContext
@@ -12,6 +11,7 @@ export const useAuth = () => {
 // AuthProvider component
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [role, setRole] = useState(null);
 
     useEffect(() => {
         const fetchSession = async () => {
@@ -20,9 +20,11 @@ export const AuthProvider = ({ children }) => {
                     method: 'GET',
                     credentials: 'include',
                 });
+
                 if (response.ok) {
-                    const userData = await response.json();
-                    setUser(userData);
+                    const { user, role } = await response.json();  // Destructure user and role from response
+                    setUser(user); // store user details
+                    setRole(role); // store user role (doctor/patient)
                 } else {
                     throw new Error('Failed to fetch session');
                 }
@@ -35,7 +37,7 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ user, setUser }}>
+        <AuthContext.Provider value={{ user, role, setUser, setRole }}>
             {children}
         </AuthContext.Provider>
     );
