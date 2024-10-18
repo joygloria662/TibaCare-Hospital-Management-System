@@ -1,6 +1,9 @@
 from flask import Flask, request, session, jsonify, current_app, url_for
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
+from flask import Flask, request, session, jsonify, current_app, url_for
+from flask_migrate import Migrate
+from flask_bcrypt import Bcrypt
 from flask_restful import Api, Resource
 from flask_cors import CORS
 from models import db, Doctor
@@ -30,6 +33,46 @@ db.init_app(app)
 # Doctor Signup Resource
 class DoctorSignup(Resource):
     def post(self):
+        data = request.form  # Get form data
+
+        # Get the uploaded image
+        image = request.files.get('image')
+
+        # Ensure an image was uploaded
+        if image:
+            # Secure the filename and save the image in the static folder
+            filename = secure_filename(image.filename)
+            image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            image.save(image_path)
+        else:
+            image_path = None
+
+        # Create a new doctor instance
+        new_doctor = Doctor(
+            title=data.get('title'),
+            doctorId=data.get('doctorId'),  # Generate a unique doctor ID for each new doctor
+            first_name=data.get('firstName'),
+            last_name=data.get('lastName'),
+            email=data.get('email'),
+            bio=data.get('bio'),
+            education=data.get('education'),
+            certifications=data.get('certifications'),
+            achievements=data.get('achievements'),
+            image=image_path,  # Store the image path
+            password=bcrypt.generate_password_hash(data.get('password')).decode('utf-8')
+        )
+
+        try:
+            # Add the doctor to the database and commit
+            db.session.add(new_doctor)
+            db.session.commit()
+            return new_doctor.to_dict(), 201
+        except Exception as e:
+            db.session.rollback()
+            return {"error": str(e)}, 500
+
+# Doctor Login Resource
+class DoctorLogin(Resource):
         data = request.form  # Get form data
 
         # Get the uploaded image
@@ -110,6 +153,7 @@ api.add_resource(DoctorLogin, '/doctorlogin', endpoint='doctorlogin')
 api.add_resource(Logout, '/logout', endpoint=None)
 api.add_resource(CheckSession, '/check_session', endpoint='check_session')
 
+# Run the application
 # Run the application
 if __name__ == "__main__":
     app.run(port=5555, debug=True)

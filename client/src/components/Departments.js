@@ -23,6 +23,7 @@ const Departments = () => {
     { id: 9, name: 'Psychiatry', imageUrl: '/images/psychiatry.jpg' }
   ];
 
+
   return (
     <div className="departments-page">
       <Navbar/>
@@ -38,9 +39,8 @@ const Departments = () => {
             {department.name === 'Emergency' ? (
               <p>For urgent cases, visit our Emergency Department immediately.</p>
             ) : (
-              <Link to={`/book-appointment/${department.id}`} className="book-appointment">
-                Book Appointment
-              </Link>
+              // Removed Book Appointment link
+              <p>Learn more about {department.name} services.</p>
             )}
           </div>
         ))}
@@ -48,6 +48,7 @@ const Departments = () => {
     </div>
   );
 };
+
 
 const WrappedDept = () => (
   <AuthProvider>

@@ -1,9 +1,11 @@
-from config import app, bcrypt, db
-from models import User
-import random
+from datetime import date, time
+from config import db, app  # Assuming you have db and app configured in config.py
+from models import Patient, Appointment  # Assuming models.py contains your models
+from random import randint
 from faker import Faker
 
-fake = Faker()
+# Create a Faker instance to generate random data
+faker = Faker()
 
 
 with app.app_context():
@@ -30,6 +32,8 @@ with app.app_context():
         users.append(user)
     db.session.add_all(users)
     db.session.commit()
-    
-    print("Seeding Complete!")
-    
+    print("Database seeded successfully!")
+
+if __name__ == "__main__":
+    with app.app_context():  # Ensure app context is active
+        seed_database()
