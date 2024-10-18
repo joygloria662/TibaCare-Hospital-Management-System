@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AuthProvider, useAuth } from './AuthContext'; // Import AuthProvider
+import { AuthProvider} from './AuthContext'; // Import AuthProvider
 import Navbar from './Navbar';
 
 const Departments = () => {

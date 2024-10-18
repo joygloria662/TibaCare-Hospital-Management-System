@@ -64,9 +64,9 @@ function DoctorLogin() {
     return (
         <>
             <Navbar />
-            <div className="login-container">
+            <div className="login-cont">
                 <div className="login">
-                    <h1>Login</h1>
+                    <h1>Login as a Doctor</h1>
                     <form onSubmit={formik.handleSubmit}>
                         <input
                             type="text"

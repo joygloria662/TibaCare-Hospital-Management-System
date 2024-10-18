@@ -181,6 +181,45 @@ code {
     min-height: 100vh;
     background-color: #f4f4f4;
 }
+/* Styling for the tab buttons in block form (column layout) */
+.tab-buttons {
+  display: flex;
+  flex-direction: column; /* Column layout to stack the buttons */
+  justify-content: center;
+  margin-right: 20px; /* Space between buttons and form */
+  gap: 10px; /* Space between the two buttons */
+}
+
+/* Individual button styling (common for both Patient and Doctor) */
+.tab-buttons button {
+  background-color: #145da0; /* Blue background matching the theme */
+  color: #ffffff; /* White text color */
+  border: none;
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 123, 255, 0.3); /* Shadow effect */
+  transition: background-color 0.3s ease, transform 0.3s; /* Hover transition */
+  width: 200px; /* Fixed width for consistent button size */
+  text-align: center; /* Center the button text */
+}
+
+/* Hover effect for buttons */
+.tab-buttons button:hover {
+  background-color: #014074; /* Darker blue on hover */
+  transform: translateY(-5px); /* Lift button on hover */
+  box-shadow: 0 8px 16px rgba(0, 123, 255, 0.4); /* Larger shadow on hover */
+}
+
+/* Active button styling */
+.tab-buttons .active {
+  background-color: #007BFF; /* Lighter blue for the active tab */
+  transform: scale(1.05); /* Slightly bigger active tab */
+  box-shadow: 0 8px 16px rgba(0, 123, 255, 0.4); /* Larger shadow for active */
+}
+
 .login {
     background-color: white;
     padding: 40px;
@@ -596,7 +635,9 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+  }
+  .auth-button{
+    display: none;
   }
 }
 

@@ -72,7 +72,7 @@ function PatientLogin() {
             <Navbar />
             <div className="login-container">
                 <div className="login">
-                    <h1>Login</h1>
+                    <h1>Login as a Patient</h1>
                     <form onSubmit={handleSubmit}>
                         <input
                             type="text"

@@ -7,7 +7,6 @@ from models import db, Doctor
 from werkzeug.utils import secure_filename
 import os
 
-# Flask app setup
 app = Flask(__name__)
 
 UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'images')
@@ -18,36 +17,29 @@ app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.json.compact = False
 
-# Initialize extensions
 migrate = Migrate(app, db)
 api = Api(app)
 bcrypt = Bcrypt(app)
 CORS(app, supports_credentials=True, resources={r"/*": {"origins": "http://localhost:4000"}})
 
-# Initialize database
+
 db.init_app(app)
 
-# Doctor Signup Resource
 class DoctorSignup(Resource):
     def post(self):
-        data = request.form  # Get form data
-
-        # Get the uploaded image
+        data = request.form
         image = request.files.get('image')
 
-        # Ensure an image was uploaded
         if image:
-            # Secure the filename and save the image in the static folder
             filename = secure_filename(image.filename)
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(image_path)
         else:
             image_path = None
-
-        # Create a new doctor instance
+            
         new_doctor = Doctor(
             title=data.get('title'),
-            doctorId=data.get('doctorId'),  # Generate a unique doctor ID for each new doctor
+            doctorId=data.get('doctorId'),
             first_name=data.get('firstName'),
             last_name=data.get('lastName'),
             email=data.get('email'),
@@ -60,7 +52,6 @@ class DoctorSignup(Resource):
         )
 
         try:
-            # Add the doctor to the database and commit
             db.session.add(new_doctor)
             db.session.commit()
             return new_doctor.to_dict(), 201
@@ -68,13 +59,11 @@ class DoctorSignup(Resource):
             db.session.rollback()
             return {"error": str(e)}, 500
 
-# Doctor Login Resource
 class DoctorLogin(Resource):
     def post(self):
-        data = request.get_json()  # Get JSON data
+        data = request.get_json() 
         doctor = Doctor.query.filter_by(email=data['email']).first()
 
-        # Verify password
         if doctor and bcrypt.check_password_hash(doctor.password, data['password']):
             session['user_id'] = doctor.id
             return {
@@ -85,7 +74,6 @@ class DoctorLogin(Resource):
         else:
             return {"error": "Invalid credentials"}, 401
 
-# Logout Resource
 class Logout(Resource):
     def delete(self):
         session.pop('user_id', None)
@@ -104,12 +92,12 @@ class CheckSession(Resource):
                 return {"error": "User not found"}, 404
         return {"error": "Unauthorized"}, 401
 
-# API Resource Routing
+
 api.add_resource(DoctorSignup, '/doctorsignup', endpoint='doctorsignup')
 api.add_resource(DoctorLogin, '/doctorlogin', endpoint='doctorlogin')
 api.add_resource(Logout, '/logout', endpoint=None)
 api.add_resource(CheckSession, '/check_session', endpoint='check_session')
 
-# Run the application
+
 if __name__ == "__main__":
-    app.run(port=5555, debug=True)
+    app.run(port=5555)
