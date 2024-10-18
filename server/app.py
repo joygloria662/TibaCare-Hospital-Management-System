@@ -1,4 +1,4 @@
-from flask import Flask, request, session, make_response, current_app, url_for
+from flask import Flask, request, session, make_response
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from flask_restful import Api, Resource
@@ -91,12 +91,12 @@ class CheckSession(Resource):
             if user_role == 'doctor':
                 user = Doctor.query.get(user_id)
             elif user_role == 'patient':
-                # user = Patient.query.get(user_id)
-                user = None  # Assume patient functionality will be added later
+                user = Patient.query.get(user_id)
+                user = None  
             if user:
                 return {
                     "user": user.to_dict(),
-                    "role": user_role  # Include user_role in the response
+                    "role": user_role 
                 }, 200
             else:
                 return {"error": "User not found"}, 404
