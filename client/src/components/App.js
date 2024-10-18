@@ -20,6 +20,7 @@ function App() {
             <div className='App'>
                 <Gallery images={images} />
                 <InfoCards />
+                <About /> {/* Render About component */}
             </div>
         </>
     );
@@ -32,3 +33,4 @@ const WrappedApp = () => (
 );
 
 export default WrappedApp;
+
