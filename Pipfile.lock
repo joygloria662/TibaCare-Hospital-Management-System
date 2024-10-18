@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "dcdbab3402501b453aef6527b2a204e761272a8ef129f9f358cb02c49a60616b"
+            "sha256": "43cedd7279d5244896b150b448a890f11a8a8050bd5573c3a77f3bd63e74592d"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -82,12 +82,12 @@
         },
         "faker": {
             "hashes": [
-                "sha256:6fd328db7195e70cdee479ee687fef6623c9b57b8023c582adbe88a01dc54297",
-                "sha256:b6c2d61861dcf1084b8e10959418fe3380a1a3dcd2796a73d43f738a42aabb4c"
+                "sha256:37b5ab951f7367ea93edb865120e9717a7a649d6a4b223f1e4a47a8a20d9e85f",
+                "sha256:be0e548352c1be6f6d9c982003848a0d305868f160bb1fb7f945acffc347e676"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.8'",
-            "version": "==30.4.0"
+            "version": "==30.6.0"
         },
         "flask": {
             "hashes": [
@@ -136,6 +136,7 @@
                 "sha256:4ba4be7f419dc72f4efd8802d69974803c37259dd42f3913b0dcf75c9447e0a0",
                 "sha256:e4b68bb881802dda1a7d878b2fc84c06d1ee57fb40b874d3dc97dabfa36b8312"
             ],
+            "index": "pypi",
             "markers": "python_version >= '3.8'",
             "version": "==3.1.1"
         },
@@ -215,7 +216,7 @@
                 "sha256:f406b22b7c9a9b4f8aa9d2ab13d6ae0ac3e85c9a809bd590ad53fed2bf70dc79",
                 "sha256:f6ff3b14f2df4c41660a7dec01045a045653998784bf8cfcb5a525bdffffbc8f"
             ],
-            "markers": "python_version < '3.13' and (platform_machine == 'aarch64' or (platform_machine == 'ppc64le' or (platform_machine == 'x86_64' or (platform_machine == 'amd64' or (platform_machine == 'AMD64' or (platform_machine == 'win32' or platform_machine == 'WIN32'))))))",
+            "markers": "platform_machine == 'aarch64' or (platform_machine == 'ppc64le' or (platform_machine == 'x86_64' or (platform_machine == 'amd64' or (platform_machine == 'AMD64' or (platform_machine == 'win32' or platform_machine == 'WIN32')))))",
             "version": "==3.1.1"
         },
         "itsdangerous": {

@@ -1,0 +1,52 @@
+/* PatientDetails.css */
+
+
+
+
+.patient-details {
+    padding: 20px;
+    background-color: #e9e9e9;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 300px;
+}
+
+
+
+
+.patient-details h2 {
+    font-size: 24px;
+    color: #00569e;
+    margin-bottom: 15px;
+}
+
+
+
+
+.patient-details p {
+    font-size: 18px;
+    color: #051d40;
+    margin: 10px 0;
+}
+
+
+
+
+.patient-details strong {
+    color: #014074;
+}
+
+
+
+
+.no-patient {
+    color: #f44336;
+    font-size: 18px;
+    text-align: center;
+}
