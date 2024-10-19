@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
-// import './PatientSearch.css';
+import { useAuth } from './AuthContext';
 
-const DoctorDetails = ({ doctorId }) => {
+const DoctorDetails = () => {
   const [doctor, setDoctor] = useState(null);
   const [error, setError] = useState(null);
+  const { user } = useAuth();
+  console.log(user);
+  
+
+  
 
   useEffect(() => {
-    fetch(`http://localhost:3000/doctors/${doctorId}`)
+    fetch(`/doctor/${user.id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -18,7 +23,7 @@ const DoctorDetails = ({ doctorId }) => {
         console.error('Fetch error:', error);
         setError(error.message);
       });
-  }, [doctorId]);
+  }, [user.id]);
 
   return (
     <div className="doctor-details">
@@ -27,9 +32,9 @@ const DoctorDetails = ({ doctorId }) => {
         <p>Error fetching doctor details: {error}</p>
       ) : doctor ? (
         <div>
-          <p><strong>Name:</strong> {doctor.name}</p>
-          <p><strong>Specialization:</strong> {doctor.specialization}</p>
-          <p><strong>Experience:</strong> {doctor.experience} years</p>
+          <p><strong>Name:</strong> {doctor.title}{doctor.first_name}{doctor.last_name}</p>
+          <p><strong>Specialization:</strong> {doctor.specialty}</p>
+          <p><strong>Experience:</strong> {doctor.certifications}</p>
         </div>
       ) : (
         <p>Loading doctor details...</p>

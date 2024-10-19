@@ -6,6 +6,7 @@ import PatientDashboard from './PatientDashboard'
 import About from "./About";
 import Contact from "./Contact";
 import Signup from "./Signup";
+import DoctorDashboard from "./DoctorDashboard";
 
 const routes = [
     {
@@ -35,6 +36,10 @@ const routes = [
     {
         path: '/signup',
         element: <Signup />
+    },
+    {
+        path: '/doctordashboard',
+        element: <DoctorDashboard/>
     }
 ]
 

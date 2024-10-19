@@ -39,7 +39,7 @@ function Navbar() {
             <>
               <h5 className="user-greeting">Hello, {user.first_name}</h5>
               {role === 'doctor' && (
-                <button><NavLink to="/doctor-dashboard" className="auth-button">Doctor Dashboard</NavLink></button>
+                <button><NavLink to="/doctordashboard" className="auth-button">Doctor Dashboard</NavLink></button>
               )}
               {role === 'patient' && (
                 <button><NavLink to="/patient-dashboard" className="auth-button">Patient Dashboard</NavLink></button>

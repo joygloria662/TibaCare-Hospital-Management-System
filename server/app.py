@@ -142,6 +142,11 @@ class CheckSession(Resource):
             else:
                 return {"error": "User not found"}, 404
         return {"error": "Unauthorized"}, 401
+    
+class DoctorById(Resource):
+    def get(self, id):
+        doctor = Doctor.query.filter_by(id=id).first()
+        return make_response(doctor.to_dict(),200)
 
 class DepartmentList(Resource):
     def get(self):
@@ -158,7 +163,7 @@ api.add_resource(CheckSession, '/check_session', endpoint='check_session')
 api.add_resource(DepartmentList, '/departments', endpoint='departments')
 api.add_resource(PatientSignup, '/patientsignup', endpoint='patientsignup')
 api.add_resource(PatientLogin, '/patientlogin', endpoint='patientlogin')
-
+api.add_resource(DoctorById, '/doctor/<int:id>')
 
 
 if __name__ == "__main__":
