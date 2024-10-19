@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 
 function DoctorSignup() {
@@ -109,146 +108,143 @@ function DoctorSignup() {
 
     return (
         <>
-            <Navbar />
-            <div className="signup">
-                <h1>Signup</h1>
-                <form className="signupForm" onSubmit={handleSubmit} encType="multipart/form-data">
-                    <select name="title" value={values.title} onChange={handleChange}>
-                        <option>Select Title</option>
-                        <option>Dr.</option>
-                    </select>
-                    <input
-                        type="text"
-                        name="doctorId"
-                        placeholder="Doctor ID"
-                        value={values.doctorId}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        className={errors.doctorId && touched.doctorId ? "inputError" : ""}
-                    />
-                    {errors.doctorId && touched.doctorId && <p className="errors">{errors.doctorId}</p>}
-                    
-                    <input
-                        type="text"
-                        name="firstName"
-                        placeholder="First Name"
-                        value={values.firstName}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        className={errors.firstName && touched.firstName ? "inputError" : ""}
-                    />
-                    {errors.firstName && touched.firstName && <p className="errors">{errors.firstName}</p>}
-                    
-                    <input
-                        type="text"
-                        name="lastName"
-                        placeholder="Last Name"
-                        value={values.lastName}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        className={errors.lastName && touched.lastName ? "inputError" : ""}
-                    />
-                    {errors.lastName && touched.lastName && <p className="errors">{errors.lastName}</p>}
-                    
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                        value={values.email}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        className={errors.email && touched.email ? "inputError" : ""}
-                    />
-                    {errors.email && touched.email && <p className="errors">{errors.email}</p>}
+        <Navbar />
+        <div className="signup">
+            <h1>Doctor Signup</h1>
+            <form className="signupForm" onSubmit={handleSubmit} encType="multipart/form-data">
+                <select name="title" value={values.title} onChange={handleChange}>
+                    <option>Select Title</option>
+                    <option>Dr.</option>
+                </select>
+                <input
+                    type="text"
+                    name="doctorId"
+                    placeholder="Doctor ID"
+                    value={values.doctorId}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={errors.doctorId && touched.doctorId ? "inputError" : ""}
+                />
+                {errors.doctorId && touched.doctorId && <p className="errors">{errors.doctorId}</p>}
+                
+                <input
+                    type="text"
+                    name="firstName"
+                    placeholder="First Name"
+                    value={values.firstName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={errors.firstName && touched.firstName ? "inputError" : ""}
+                />
+                {errors.firstName && touched.firstName && <p className="errors">{errors.firstName}</p>}
+                
+                <input
+                    type="text"
+                    name="lastName"
+                    placeholder="Last Name"
+                    value={values.lastName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={errors.lastName && touched.lastName ? "inputError" : ""}
+                />
+                {errors.lastName && touched.lastName && <p className="errors">{errors.lastName}</p>}
+                
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={errors.email && touched.email ? "inputError" : ""}
+                />
+                {errors.email && touched.email && <p className="errors">{errors.email}</p>}
 
-                    <select 
-                        name="department" 
-                        value={values.department} 
-                        onChange={handleChange}
-                    >
-                        <option value="">Select Department</option>
-                        {departments.map(department => (
-                            <option key={department.id} value={department.id}>{department.name}</option>
-                        ))}
-                    </select>
-                    {errors.department && touched.department && <p className="errors">{errors.department}</p>}
-                    
-                    <input
-                        type="text"
-                        name="bio"
-                        placeholder="Enter Bio"
-                        value={values.bio}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                    />
-                    
-                    <input
-                        type="text"
-                        name="education"
-                        placeholder="Education"
-                        value={values.education}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                    />
-                    
-                    <input
-                        type="text"
-                        name="certifications"
-                        placeholder="Certifications"
-                        value={values.certifications}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                    />
-                    
-                    <input
-                        type="text"
-                        name="specialty"
-                        placeholder="Specialty"
-                        value={values.specialty}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                    />
-                    
-                    <input
-                        type="file"
-                        name="image"
-                        onChange={(event) => setFieldValue("image", event.currentTarget.files[0])}
-                        onBlur={handleBlur}
-                    />
-                    
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        value={values.password}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        className={errors.password && touched.password ? "inputError" : ""}
-                    />
-                    {errors.password && touched.password && <p className="errors">{errors.password}</p>}
-                    
-                    <input
-                        type="password"
-                        name="confirmPassword"
-                        placeholder="Confirm Password"
-                        value={values.confirmPassword}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        className={errors.confirmPassword && touched.confirmPassword ? "inputError" : ""}
-                    />
-                    {errors.confirmPassword && touched.confirmPassword && <p className="errors">{errors.confirmPassword}</p>}
-                    
-                    <div className="signupButtons">
-                        <button disabled={loading} type="submit">
-                            {loading ? 'Submitting...' : 'SIGNUP'}
-                        </button>
-                        <Link to="/login" className="hero-link">
-                            <button type="button" className="cancelbtn">CANCEL</button>
-                        </Link>
-                    </div>
-                </form>
-                {message && <p className="responseMessage">{message}</p>}
-            </div>
+                <select 
+                    name="department" 
+                    value={values.department} 
+                    onChange={handleChange}
+                >
+                    <option value="">Select Department</option>
+                    {departments.map(department => (
+                        <option key={department.id} value={department.id}>{department.name}</option>
+                    ))}
+                </select>
+                {errors.department && touched.department && <p className="errors">{errors.department}</p>}
+                
+                <input
+                    type="text"
+                    name="bio"
+                    placeholder="Enter Bio"
+                    value={values.bio}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                />
+                
+                <input
+                    type="text"
+                    name="education"
+                    placeholder="Education"
+                    value={values.education}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                />
+                
+                <input
+                    type="text"
+                    name="certifications"
+                    placeholder="Certifications"
+                    value={values.certifications}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                />
+                
+                <input
+                    type="text"
+                    name="specialty"
+                    placeholder="Specialty"
+                    value={values.specialty}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                />
+                
+                <input
+                    type="file"
+                    name="image"
+                    onChange={(event) => setFieldValue("image", event.currentTarget.files[0])}
+                    onBlur={handleBlur}
+                />
+                
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={errors.password && touched.password ? "inputError" : ""}
+                />
+                {errors.password && touched.password && <p className="errors">{errors.password}</p>}
+                
+                <input
+                    type="password"
+                    name="confirmPassword"
+                    placeholder="Confirm Password"
+                    value={values.confirmPassword}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={errors.confirmPassword && touched.confirmPassword ? "inputError" : ""}
+                />
+                {errors.confirmPassword && touched.confirmPassword && <p className="errors">{errors.confirmPassword}</p>}
+                
+                <div className="signupButtons">
+                    <button disabled={loading} type="submit">
+                        {loading ? 'Submitting...' : 'SIGNUP'}
+                    </button>
+                </div>
+            </form>
+            {message && <p className="responseMessage">{message}</p>}
+        </div>
         </>
     );
 }

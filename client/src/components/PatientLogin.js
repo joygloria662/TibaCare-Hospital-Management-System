@@ -63,10 +63,6 @@ function PatientLogin() {
         }
     }, [message]);
 
-    const handleGoBack = () => {
-        window.history.back();
-    };
-
     return (
         <>
             <Navbar />
@@ -106,7 +102,6 @@ function PatientLogin() {
                     <p>
                         Don't have an account? <Link to="/signup">Sign Up</Link>
                     </p>
-                    <button onClick={handleGoBack}>Back</button>
                 </div>
             </div>
         </>

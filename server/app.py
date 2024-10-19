@@ -75,6 +75,47 @@ class DoctorLogin(Resource):
             }
         else:
             return {"error": "Invalid credentials"}, 401
+        
+class PatientSignup(Resource):
+    def post(self):
+        data = request.form
+           
+        new_patient = Patient(
+            first_name=data.get('firstName'),
+            last_name=data.get('lastName'),
+            email=data.get('email'),
+            age=data.get('age'),
+            phone_number=data.get('phoneNumber'),
+            gender = data.get('gender'),
+            password=bcrypt.generate_password_hash(data.get('password')).decode('utf-8')
+        )
+
+        try:
+            db.session.add(new_patient)
+            db.session.commit()
+            return new_patient.to_dict(), 201
+        except Exception as e:
+            db.session.rollback()
+            return {"error": str(e)}, 500
+
+class PatientLogin(Resource):
+    def post(self):
+        data = request.get_json() 
+        
+        patient = Patient.query.filter_by(email=data['email']).first()
+
+        if patient and bcrypt.check_password_hash(patient.password, data['password']):
+            session['user_id'] = patient.id
+            session['user_role'] = 'patient'
+            
+            return {
+                    "message": "Login successful",
+                    "data": patient.to_dict(),
+                }, 200
+        else:
+            return {"error": "Invalid email or password"}, 401
+
+
 
 class Logout(Resource):
     def delete(self):
@@ -115,6 +156,9 @@ api.add_resource(DoctorLogin, '/doctorlogin', endpoint='doctorlogin')
 api.add_resource(Logout, '/logout', endpoint=None)
 api.add_resource(CheckSession, '/check_session', endpoint='check_session')
 api.add_resource(DepartmentList, '/departments', endpoint='departments')
+api.add_resource(PatientSignup, '/patientsignup', endpoint='patientsignup')
+api.add_resource(PatientLogin, '/patientlogin', endpoint='patientlogin')
+
 
 
 if __name__ == "__main__":

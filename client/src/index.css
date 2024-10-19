@@ -142,7 +142,7 @@ code {
 }
 .signupButtons {
   display: flex;
-  width: 80%;
+  width: 100%;
   justify-content: space-between;
 }
 .signupButtons a {
@@ -160,7 +160,7 @@ code {
   font-size: 18px;
   font-weight: bold;
   color: #ffffff;
-  width: 30%;
+  width: 100%;
   margin: 10px 1%;
   border: none;
   cursor: pointer;
@@ -174,12 +174,17 @@ code {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 123, 255, 0.4);
 }
-.login-container {
+.login-container{
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-color: #f4f4f4;
+    border: 20px solid black;
+}
+
+.signup-container {
+  background-color: black;
 }
 /* Styling for the tab buttons in block form (column layout) */
 .tab-buttons {

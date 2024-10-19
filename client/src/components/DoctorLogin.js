@@ -57,10 +57,6 @@ function DoctorLogin() {
         }
     }, [message]);
 
-    const handleGoBack = () => {
-        navigate(-1); // Navigate back
-    };
-
     return (
         <>
             <Navbar />
@@ -100,7 +96,6 @@ function DoctorLogin() {
                     <p>
                         Don't have an account? <Link to="/signup">Sign Up</Link>
                     </p>
-                    <button onClick={handleGoBack}>Back</button>
                 </div>
             </div>
         </>
