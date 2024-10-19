@@ -180,19 +180,29 @@ code {
     align-items: center;
     min-height: 100vh;
     background-color: #f4f4f4;
-    border: 20px solid black;
+}
+.Signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Signup-form {
+  max-width: 600px;
+  width: 100%;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.signup-container {
-  background-color: black;
-}
 /* Styling for the tab buttons in block form (column layout) */
 .tab-buttons {
   display: flex;
   flex-direction: column; /* Column layout to stack the buttons */
   justify-content: center;
-  margin-right: 20px; /* Space between buttons and form */
-  gap: 10px; /* Space between the two buttons */
+  margin-left: -1000px; /* Space between buttons and form */
+  gap: 10px;
+  position: fixed;
 }
 
 /* Individual button styling (common for both Patient and Doctor) */
@@ -643,6 +653,42 @@ p {
   }
   .auth-button{
     display: none;
+  }
+  .Signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Signup-form {
+    max-width: 600px;
+    width: 100%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling for the tab buttons in block form (column layout) */
+  .tab-buttons {
+    display: flex;
+    flex-direction: column; /* Column layout to stack the buttons */
+    justify-content: center;
+    margin-left: 0px;
+    position: relative;
+  }
+  .tab-buttons button {
+    background-color: #145da0; /* Blue background matching the theme */
+    color: #ffffff; /* White text color */
+    border: none;
+    padding: 15px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 123, 255, 0.3); /* Shadow effect */
+    transition: background-color 0.3s ease, transform 0.3s; /* Hover transition */
+    width: 100px; /* Fixed width for consistent button size */
+    text-align: center; /* Center the button text */
   }
 }
 

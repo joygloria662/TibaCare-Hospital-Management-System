@@ -11,21 +11,21 @@ function PatientSignup() {
     const passRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
     // Validation schema
-    const basicSchema = yup.object().shape({
+    const validationSchema = yup.object().shape({
         first_name: yup.string().required('First name is required'),
         last_name: yup.string().required('Last name is required'),
-        email: yup.string().email('Please enter a valid email').required('Email is required'),
-        age: yup.number().integer('Age must be a number').required('Age is required'),
+        email: yup.string().email('Invalid email').required('Email is required'),
+        age: yup.number().integer('Age must be a valid number').required('Age is required'),
         gender: yup.string().required('Gender is required'),
         phone_number: yup.string()
             .matches(/^\d{10,13}$/, 'Phone number must be between 10 and 13 digits')
             .required('Phone number is required'),
         password: yup.string()
-            .min(6, 'Password must be at least 6 characters long')
-            .matches(passRules, "Password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number")
+            .min(6, 'Password must be at least 6 characters')
+            .matches(passRules, "Password must include at least 1 uppercase, 1 lowercase letter, and 1 number")
             .required('Password is required'),
         confirmPassword: yup.string()
-            .oneOf([yup.ref('password')], "Passwords do not match")
+            .oneOf([yup.ref('password')], "Passwords must match")
             .required('Confirm password is required'),
     });
 
@@ -40,29 +40,35 @@ function PatientSignup() {
             password: '',
             confirmPassword: ''
         },
-        validationSchema: basicSchema,
+        validationSchema,
         onSubmit: async (values, actions) => {
             setLoading(true);
             try {
-                // Directly use formik `values` as the request body
                 const response = await fetch('/patientsignup', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json', // Ensure JSON format
+                        'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(values), // Send formik values directly
+                    body: JSON.stringify({
+                        first_name: values.first_name,
+                        last_name: values.last_name,
+                        email: values.email,
+                        age: values.age,
+                        gender: values.gender,
+                        phone_number: values.phone_number,
+                        password: values.password
+                    }),
                 });
 
                 if (!response.ok) {
                     const errorData = await response.json();
-                    throw new Error(errorData.error || 'Failed to submit the form');
+                    throw new Error(errorData.error || 'Signup failed');
                 }
 
-                // Get the success data (assuming it's in JSON format)
                 const data = await response.json();
-                setMessage(data.message);
+                setMessage(data.message || "Signup successful!");
                 setMessageType('success');
-                actions.resetForm(); // Reset the form after successful submission
+                actions.resetForm();
             } catch (error) {
                 setMessage(error.message);
                 setMessageType('error');
@@ -72,19 +78,18 @@ function PatientSignup() {
         }
     });
 
-    const { values, errors, touched, handleBlur, handleChange, handleSubmit} = formik;
+    const { values, errors, touched, handleBlur, handleChange, handleSubmit } = formik;
 
     // Clear message after 5 seconds
     useEffect(() => {
         if (message) {
             const timer = setTimeout(() => {
                 setMessage('');
-                // setMessageType('');
             }, 5000);
             return () => clearTimeout(timer);
         }
     }, [message]);
-    
+
     return (
         <>
             <Navbar />
@@ -125,7 +130,7 @@ function PatientSignup() {
                     {errors.email && touched.email && <p className="errors">{errors.email}</p>}
 
                     <input
-                        type="text"
+                        type="number"
                         name="age"
                         placeholder="Age"
                         value={values.age}
@@ -183,10 +188,10 @@ function PatientSignup() {
                     {errors.confirmPassword && touched.confirmPassword && <p className="errors">{errors.confirmPassword}</p>}
 
                     <div className="signupButtons">
-                    <button disabled={loading} type="submit">
-                        {loading ? 'Submitting...' : 'SIGNUP'}
-                    </button>
-                </div>
+                        <button disabled={loading} type="submit">
+                            {loading ? 'Submitting...' : 'SIGNUP'}
+                        </button>
+                    </div>
                 </form>
                 {message && <p className={`responseMessage ${messageType}`}>{message}</p>}
             </div>

@@ -1,4 +1,3 @@
-// Login.js
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
@@ -26,7 +25,7 @@ function PatientLogin() {
         onSubmit: async (values) => {
             setLoading(true);
             try {
-                const response = await fetch(`/login`, {
+                const response = await fetch(`/patientlogin`, {
                     method: "POST",
                     credentials: 'include',
                     headers: {
@@ -34,19 +33,17 @@ function PatientLogin() {
                     },
                     body: JSON.stringify(values)
                 });
-                
+
+                console.log(values)
+
                 if (response.ok) {
                     const data = await response.json();
-                    setUser(data); // Set user in context
+                    console.log(data);
+                    setUser(data);
+                    navigate("/")
                     setMessage("Login Successful");
-
-                    if (data.data.role === "Doctor") {
-                        navigate("/departments");
-                    } else if (data.data.role === "Patient") {
-                        navigate("/");
-                    }
                 } else {
-                    setMessage("Invalid username or password");
+                    setMessage(data.error || "Invalid username or password"); // Handle specific error from backend
                 }
             } catch (error) {
                 setMessage("An error occurred during login");

@@ -29,7 +29,7 @@ class DoctorSignup(Resource):
     def post(self):
         data = request.form
         image = request.files.get('image')
-
+        
         if image:
             filename = secure_filename(image.filename)
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
@@ -78,15 +78,15 @@ class DoctorLogin(Resource):
         
 class PatientSignup(Resource):
     def post(self):
-        data = request.form
-           
+        data = request.get_json()
+
         new_patient = Patient(
-            first_name=data.get('firstName'),
-            last_name=data.get('lastName'),
+            first_name=data.get('first_name'),
+            last_name=data.get('last_name'),
             email=data.get('email'),
-            age=data.get('age'),
-            phone_number=data.get('phoneNumber'),
-            gender = data.get('gender'),
+            age=int(data.get('age')),
+            phone_number=data.get('phone_number'),
+            gender=data.get('gender'),
             password=bcrypt.generate_password_hash(data.get('password')).decode('utf-8')
         )
 
@@ -111,6 +111,7 @@ class PatientLogin(Resource):
             return {
                     "message": "Login successful",
                     "data": patient.to_dict(),
+                    "status": 200
                 }, 200
         else:
             return {"error": "Invalid email or password"}, 401
@@ -132,8 +133,7 @@ class CheckSession(Resource):
             if user_role == 'doctor':
                 user = Doctor.query.get(user_id)
             elif user_role == 'patient':
-                user = Patient.query.get(user_id)
-                user = None  
+                user = Patient.query.get(user_id) 
             if user:
                 return {
                     "user": user.to_dict(),

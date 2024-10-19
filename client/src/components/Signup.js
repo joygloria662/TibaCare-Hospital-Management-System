@@ -13,11 +13,9 @@ function Signup() {
     const handleDoctorSignupClick = () => {
         setIsPatientSignup(false);
     };
-    
 
     return (
         <div className="Signup-container">
-            <div>
             <div className="tab-buttons">
                 <button onClick={handlePatientSignupClick} className={isPatientSignup ? "active" : ""}>
                     Patient Signup
@@ -26,15 +24,14 @@ function Signup() {
                     Doctor Signup
                 </button>
                 <Link to='/'>
-                <button>
-                    Cancel
-                </button>
+                    <button>
+                        Cancel
+                    </button>
                 </Link>
             </div>
-            <div className="Signup-form">
-                {isPatientSignup ? <PatientSignup /> : <DoctorSignup />}
-            </div>
-            </div> 
+                <div className="Signup-form">
+                    {isPatientSignup ? <PatientSignup /> : <DoctorSignup />}
+                </div>
         </div>
     );
 }
