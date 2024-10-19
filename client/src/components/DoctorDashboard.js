@@ -7,9 +7,6 @@ const DoctorDetails = () => {
   const { user } = useAuth();
   console.log(user);
   
-
-  
-
   useEffect(() => {
     fetch(`/doctor/${user.id}`)
       .then((response) => {

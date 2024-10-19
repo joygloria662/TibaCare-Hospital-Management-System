@@ -26,7 +26,7 @@ const routes = [
         element: <Login />
     },
     {
-        path: '/Patient-dashboard',
+        path: '/patientdashboard',
         element: <PatientDashboard />
     },
     {
