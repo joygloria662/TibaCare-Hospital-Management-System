@@ -1,57 +1,49 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from './AuthContext';
 
-
-const PatientDetails = ({ patientId }) => {
-  const [patient, setPatient] = useState(null);
-  const [error, setError] = useState(null);
-
+const PatientDetails = () => {
+  const [patient, setPatient] = useState(null); // Set initial state to null
+  const [error, setError] = useState('');
+  const { user } = useAuth();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/patients/${patientId}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => setPatient(data))
-      .catch((error) => {
-        console.error('Fetch error:', error);
-        setError(error.message);
-      });
-  }, [patientId]);
+    if (user) {
+      fetch(`/patient/${user.id}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((data) =>{console.log('Fetched patient data:', data); // Add this line to inspect the fetched data
+           setPatient(data)
+          })
+        .catch((error) => {
+          console.error('Fetch error:', error);
+          setError(error.message);
+        });
+    }
+  }, [user.id]);
 
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
+  // Display a loading message or a placeholder if patient data is null
+  if (!patient) {
+    return <p>Loading patient details...</p>;
+  }
 
   return (
     <div className="patient-details">
       <h2>Patient Details</h2>
-      {error ? (
-        <p>Error fetching patient details: {error}</p>
-      ) : patient ? (
-        <div>
-          <p><strong>Name:</strong> {patient.name}</p>
-          <p><strong>Age:</strong> {patient.age}</p>
-          <p><strong>Medical History:</strong></p>
-          {patient.medicalHistory && patient.medicalHistory.length > 0 ? (
-            <ul>
-              {patient.medicalHistory.map((entry, index) => (
-                <li key={index}>
-                  <p><strong>Date:</strong> {entry.date}</p>
-                  <p><strong>Diagnosis:</strong> {entry.diagnosis}</p>
-                  <p><strong>Treatment:</strong> {entry.treatment}</p>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>No medical history available.</p>
-          )}
-        </div>
-      ) : (
-        <p>Loading patient details...</p>
-      )}
+      <div>
+        <p><strong>Name:</strong> {patient.first_name}</p>
+        <p><strong>Age:</strong> {patient.age}</p>
+        <p><strong>Medical Records:</strong> {patient.medical_records?.join(', ') || 'No medical records found'}</p>
+      </div>
     </div>
   );
 };
-
 
 export default PatientDetails;
