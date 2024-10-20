@@ -7,6 +7,8 @@ import About from "./About";
 import Contact from "./Contact";
 import Signup from "./Signup";
 import DoctorDashboard from "./DoctorDashboard";
+import PrivateRoute from "./PrivateRoute";
+
 
 const routes = [
     {
@@ -26,10 +28,6 @@ const routes = [
         element: <Login />
     },
     {
-        path: '/patientdashboard',
-        element: <PatientDashboard />
-    },
-    {
         path: "/departments",
         element: <Departments />
     },
@@ -38,8 +36,12 @@ const routes = [
         element: <Signup />
     },
     {
+        path: '/patientdashboard',
+        element: <PrivateRoute element={<PatientDashboard />} />  // Protect patient dashboard
+    },
+    {
         path: '/doctordashboard',
-        element: <DoctorDashboard/>
+        element: <PrivateRoute element={<DoctorDashboard />} />  // Protect doctor dashboard
     }
 ]
 

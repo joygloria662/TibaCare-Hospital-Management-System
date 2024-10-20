@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom";
+
+
 
 function PatientSignup() {
+    const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
     const [messageType, setMessageType] = useState(''); // "success" or "error"
@@ -67,6 +71,7 @@ function PatientSignup() {
 
                 const data = await response.json();
                 setMessage(data.message || "Signup successful!");
+                navigate('/login');
                 setMessageType('success');
                 actions.resetForm();
             } catch (error) {
