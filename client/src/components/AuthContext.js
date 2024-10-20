@@ -12,6 +12,7 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [role, setRole] = useState(null);
+    const [loading, setLoading] = useState(true); 
 
     useEffect(() => {
         const fetchSession = async () => {
@@ -30,6 +31,8 @@ export const AuthProvider = ({ children }) => {
                 }
             } catch (error) {
                 console.error('Error:', error);
+            } finally{
+                setLoading(false);
             }
         };
 
@@ -37,7 +40,7 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ user, role, setUser, setRole }}>
+        <AuthContext.Provider value={{ user, role, setUser, setRole, loading }}>
             {children}
         </AuthContext.Provider>
     );
