@@ -42,7 +42,7 @@ function Navbar() {
                 <button><NavLink to="/doctordashboard" className="auth-button">Doctor Dashboard</NavLink></button>
               )}
               {role === 'patient' && (
-                <NavLink to="/patient-dashboard" className="auth-button">Patient Dashboard</NavLink>
+                <button><NavLink to="/patientdashboard" className="auth-button">Patient Dashboard</NavLink></button>
               )}
               <button onClick={handleLogout} className="auth-button">Logout</button>
             </>

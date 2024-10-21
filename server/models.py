@@ -8,8 +8,7 @@ db = SQLAlchemy()
 
 class Patient(db.Model, sm):
     __tablename__ = 'patients'
-
-    # Exclude appointments and doctors to prevent circular reference
+    
     serialize_rules = ("-appointments.patient", "-appointments.doctor", "-doctors")
 
     id = db.Column(db.Integer, primary_key=True)
@@ -25,7 +24,6 @@ class Patient(db.Model, sm):
     doctors = association_proxy("appointments", "doctor", creator=lambda doctor_obj: Appointment(doctor=doctor_obj))
 
     def to_dict(self):
-        # Manually serialize fields to avoid recursion
         return {
             "id": self.id,
             "first_name": self.first_name,
@@ -38,7 +36,6 @@ class Patient(db.Model, sm):
 
     def __repr__(self):
         return f"<Patient {self.first_name} {self.last_name} {self.email}>"
-
 
 class Appointment(db.Model, sm):
     __tablename__ = 'appointments'

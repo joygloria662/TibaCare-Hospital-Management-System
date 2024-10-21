@@ -37,7 +37,7 @@ function DoctorLogin() {
                 const data = await response.json();
                 if (response.ok) {
                     setUser(data); // Set user in context
-                    navigate("/departments");
+                    navigate("/");
                     setMessage("Login Successful");
                 } else {
                     setMessage(data.error || "Invalid username or password"); // Handle specific error from backend

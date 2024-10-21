@@ -1,7 +1,6 @@
 import React from 'react';
 import PatientDetails from './PatientDetails';
 import Departments from './Departments';
-import './PatientDashboard.css';  
 
 const PatientDashboard = () => {
     const patientId = 1;
