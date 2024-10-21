@@ -202,7 +202,6 @@ api.add_resource(DoctorLogin, '/doctorlogin', endpoint='doctorlogin')
 api.add_resource(Logout, '/logout', endpoint=None)
 api.add_resource(CheckSession, '/check_session', endpoint='check_session')
 
-api.add_resource(DepartmentList, '/departments', endpoint='departments')
 api.add_resource(PatientSignup, '/patientsignup', endpoint='patientsignup')
 api.add_resource(PatientLogin, '/patientlogin', endpoint='patientlogin')
 api.add_resource(DoctorById, '/doctor/<int:id>')
