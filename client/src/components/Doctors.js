@@ -6,7 +6,7 @@ import DoctorCard from './DoctorCard'; // Import the DoctorCard component
 const Doctors = () => {
   const { departmentId } = useParams();
   const [doctors, setDoctors] = useState([]);
-
+console.log(doctors)
   useEffect(() => {
     // Fetching doctors by department from the Flask API
     fetch(`/api/departments/${departmentId}/doctors`)
