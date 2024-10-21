@@ -3,6 +3,7 @@ import Navbar from "./Navbar"; // Adjust the path if needed
 import Footer from "./Footer"; // Adjust the path if needed
 import './Contact.css'; // Ensure to import the CSS file
 
+
 function Contact() {
   return (
     <div>

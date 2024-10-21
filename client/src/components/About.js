@@ -65,6 +65,7 @@ function About() {
         </div>
       </div>
 
+
       {/* Footer */}
       <Footer />
     </section>
