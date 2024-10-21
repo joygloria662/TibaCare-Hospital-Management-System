@@ -13,7 +13,7 @@ function PatientLogin() {
 
     const loginSchema = yup.object().shape({
         email: yup.string().email("Invalid email format").required('Email is required'),
-        password: yup.string().required('Username is required')
+        password: yup.string().required('Password is required') // Changed 'Username' to 'Password'
     });
 
     const { values, errors, touched, isSubmitting, handleChange, handleBlur, handleSubmit } = useFormik({
@@ -37,13 +37,14 @@ function PatientLogin() {
                 console.log(values)
 
                 if (response.ok) {
-                    const data = await response.json();
+                    const data = await response.json(); // Make sure 'data' is defined here
                     console.log(data);
                     setUser(data);
-                    navigate("/")
+                    navigate("/");
                     setMessage("Login Successful");
                 } else {
-                    setMessage(data.error || "Invalid username or password"); // Handle specific error from backend
+                    const errorData = await response.json(); // Fetch error data if response is not OK
+                    setMessage(errorData.error || "Invalid email or password"); // Handle specific error from backend
                 }
             } catch (error) {
                 setMessage("An error occurred during login");

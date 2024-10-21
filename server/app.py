@@ -24,8 +24,25 @@ api = Api(app)
 bcrypt = Bcrypt(app)
 CORS(app, supports_credentials=True, resources={r"/*": {"origins": "http://localhost:4000"}})
 
-
 db.init_app(app)
+
+# Department List
+class DepartmentList(Resource):
+    def get(self):
+        departments_dict = [department.to_dict() for department in Department.query.all()]
+        return make_response(departments_dict, 200)
+
+# Doctors by Department
+@app.route('/api/departments/<int:department_id>/doctors')
+def get_doctors_by_department(department_id):
+    doctors = Doctor.query.filter_by(department_id=department_id).all()
+    return jsonify([doctor.to_card_dict() for doctor in doctors])
+
+# Doctor Profile Information
+@app.route('/api/doctors/<int:doctor_id>', methods=['GET'])
+def get_doctor_profile(doctor_id):
+    doctor = Doctor.query.get_or_404(doctor_id)
+    return jsonify(doctor.to_profile_dict())
 
 class DoctorSignup(Resource):
     def post(self):
@@ -50,7 +67,7 @@ class DoctorSignup(Resource):
             certifications=data.get('certifications'),
             specialty=data.get('specialty'),
             image=image_path,
-            department_id = data.get('department'),
+            department_id=data.get('department'),
             password=bcrypt.generate_password_hash(data.get('password')).decode('utf-8')
         )
 
@@ -118,8 +135,6 @@ class PatientLogin(Resource):
         else:
             return {"error": "Invalid email or password"}, 401
 
-
-
 class Logout(Resource):
     def delete(self):
         session.pop('user_id', None)
@@ -181,12 +196,12 @@ class Appointment(Resource):
 
         return jsonify([appointment.to_dict() for appointment in appointments])
 
-
-
+# Register API Resources
 api.add_resource(DoctorSignup, '/doctorsignup', endpoint='doctorsignup')
 api.add_resource(DoctorLogin, '/doctorlogin', endpoint='doctorlogin')
 api.add_resource(Logout, '/logout', endpoint=None)
 api.add_resource(CheckSession, '/check_session', endpoint='check_session')
+
 api.add_resource(DepartmentList, '/departments', endpoint='departments')
 api.add_resource(PatientSignup, '/patientsignup', endpoint='patientsignup')
 api.add_resource(PatientLogin, '/patientlogin', endpoint='patientlogin')
@@ -194,6 +209,8 @@ api.add_resource(DoctorById, '/doctor/<int:id>')
 api.add_resource(PatientById, '/patient/<int:id>')
 api.add_resource(Appointment, '/appointments', '/appointments/<int:appointment_id>')
 
+
+api.add_resource(DepartmentList, '/api/departments', endpoint='departments')  # Updated endpoint
 
 
 if __name__ == "__main__":

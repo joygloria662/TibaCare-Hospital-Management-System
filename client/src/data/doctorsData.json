@@ -1,0 +1,704 @@
+[
+    
+    {
+        "departmentId": 16,
+        "departmentName": "Emergency Department",
+        "doctors": [
+          {
+            "id": 45,
+            "name": "Dr. Michael Ndungu",
+            "specialty": "Emergency Physician",
+            "bio": "Dr. Michael Ndungu has over 15 years of experience in emergency medicine, providing critical care in life-threatening situations.",
+            "experience": "15 years",
+            "education": "MBChB (University of Nairobi), MMed (Emergency Medicine) - University of Cape Town",
+            "certifications": "Certified Emergency Physician",
+            "achievements": "Led emergency response teams during major natural disasters.",
+            "imageUrl": "/images/Dr45.jpg",
+            "fullyBooked": false
+          },
+          {
+            "id": 46,
+            "name": "Dr. Sarah Onyango",
+            "specialty": "Trauma Surgeon",
+            "bio": "Dr. Sarah Onyango is a trauma surgeon with 12 years of experience handling complex traumatic injuries in emergency settings.",
+            "experience": "12 years",
+            "education": "MBChB (Moi University), MMed (Trauma Surgery) - Johns Hopkins University",
+            "certifications": "Board Certified Trauma Surgeon",
+            "achievements": "Developed new protocols for rapid trauma response in hospitals.",
+            "imageUrl": "/images/Dr46.jpg",
+            "fullyBooked": true
+          },
+          {
+            "id": 47,
+            "name": "Dr. James Wambui",
+            "specialty": "Emergency Physician",
+            "bio": "Dr. James Wambui specializes in emergency medicine, managing patients in critical condition with precision and care.",
+            "experience": "10 years",
+            "education": "MBChB (University of Nairobi), MMed (Emergency Medicine) - University of Stellenbosch",
+            "certifications": "Certified Emergency Physician",
+            "achievements": "Published research on emergency triage systems in East Africa.",
+            "imageUrl": "/images/Dr47.jpg",
+            "fullyBooked": false
+          },
+          {
+            "id": 48,
+            "name": "Dr. Linda Njoroge",
+            "specialty": "Critical Care Specialist",
+            "bio": "With 11 years of experience, Dr. Linda Njoroge is a leader in critical care, specializing in the treatment of patients in the ICU.",
+            "experience": "11 years",
+            "education": "MBChB (University of Nairobi), MMed (Critical Care) - University of Pretoria",
+            "certifications": "Certified Critical Care Specialist",
+            "achievements": "Led ICU teams through various national emergencies.",
+            "imageUrl": "/images/Dr48.jpg",
+            "fullyBooked": false
+          },
+          {
+            "id": 49,
+            "name": "Dr. Peter Mwangi",
+            "specialty": "Emergency Physician",
+            "bio": "Dr. Peter Mwangi is known for his calm demeanor in high-pressure situations, handling critical cases with expertise.",
+            "experience": "9 years",
+            "education": "MBChB (Moi University), MMed (Emergency Medicine) - University of Oxford",
+            "certifications": "Certified Emergency Physician",
+            "achievements": "Introduced innovative life-saving techniques in trauma care.",
+            "imageUrl": "/images/Dr49.jpg",
+            "fullyBooked": false
+          },
+          {
+            "id": 50,
+            "name": "Dr. Nancy Omondi",
+            "specialty": "Emergency Physician",
+            "bio": "Dr. Nancy Omondi is a highly skilled emergency physician with 8 years of experience in handling acute medical emergencies.",
+            "experience": "8 years",
+            "education": "MBChB (University of Nairobi), MMed (Emergency Medicine) - Harvard University",
+            "certifications": "Certified Emergency Physician",
+            "achievements": "Developed a rapid emergency response framework for local hospitals.",
+            "imageUrl": "/images/Dr50.jpg",
+            "fullyBooked": true
+          }
+        ]
+      },
+
+      {
+        "departmentId": 1,
+        "departmentName": "Cardiology",
+        "doctors": [
+          {
+            "id": 1,
+            "name": "Dr. John Kamau",
+            "specialty": "Cardiologist",
+            "bio": "Dr. John Kamau is a senior cardiologist with over 20 years of experience in treating heart diseases.",
+            "experience": "20 years",
+            "education": "MBChB (University of Nairobi), MMed (Cardiology) - University of London",
+            "certifications": "Certified Cardiologist",
+            "achievements": "Developed a new method for non-invasive cardiac surgery.",
+            "imageUrl": "/images/Dr1.jpg",
+            "fullyBooked": false
+          },
+          {
+            "id": 2,
+            "name": "Dr. Jane Mwangi",
+            "specialty": "Cardiologist",
+            "bio": "Dr. Jane Mwangi is a renowned cardiologist specializing in heart failure and complex cardiac conditions.",
+            "experience": "18 years",
+            "education": "MBChB (Moi University), MMed (Cardiology) - University of Toronto",
+            "certifications": "Board Certified Cardiologist",
+            "achievements": "Published numerous research papers on heart failure treatments.",
+            "imageUrl": "/images/Dr2.jpg",
+            "fullyBooked": true
+          },
+          {
+            "id": 3,
+            "name": "Dr. Allan Wekesa",
+            "specialty": "Cardiologist",
+            "bio": "Dr. Allan Wekesa is a specialist in interventional cardiology, treating patients with minimally invasive procedures.",
+            "experience": "15 years",
+            "education": "MBChB (University of Nairobi), MMed (Interventional Cardiology) - University of Sydney",
+            "certifications": "Certified Interventional Cardiologist",
+            "achievements": "Performed over 500 successful angioplasty surgeries.",
+            "imageUrl": "/images/Dr3.jpg",
+            "fullyBooked": false
+          },
+          {
+            "id": 4,
+            "name": "Dr. Susan Otieno",
+            "specialty": "Cardiologist",
+            "bio": "Dr. Susan Otieno is a skilled cardiologist focused on treating arrhythmias and other heart rhythm disorders.",
+            "experience": "10 years",
+            "education": "MBChB (Moi University), MMed (Cardiology) - University of Oxford",
+            "certifications": "Board Certified Cardiologist",
+            "achievements": "Led a team that introduced new arrhythmia treatment protocols.",
+            "imageUrl": "/images/Dr4.jpg",
+            "fullyBooked": false
+          }
+        ]
+      },
+
+{
+  "departmentId": 2,
+  "departmentName": "Neurology",
+  "doctors": [
+    {
+      "id": 5,
+      "name": "Dr. Peter Odhiambo",
+      "specialty": "Neurologist",
+      "bio": "Dr. Peter Odhiambo has over 20 years of experience in treating neurological disorders, including epilepsy and stroke.",
+      "experience": "20 years",
+      "education": "MBChB (University of Nairobi), MMed (Neurology) - University of Cambridge",
+      "certifications": "Certified Neurologist",
+      "achievements": "Developed new therapies for stroke rehabilitation.",
+      "imageUrl": "/images/Dr5.jpg",
+      "fullyBooked": false
+    },
+    {
+      "id": 6,
+      "name": "Dr. Ann Wanjiru",
+      "specialty": "Neurologist",
+      "bio": "Dr. Ann Wanjiru is a specialist in neurodegenerative diseases such as Alzheimer's and Parkinson's.",
+      "experience": "18 years",
+      "education": "MBChB (Moi University), MMed (Neurology) - University of Glasgow",
+      "certifications": "Board Certified Neurologist",
+      "achievements": "Conducted groundbreaking research on Alzheimer's treatment.",
+      "imageUrl": "/images/Dr6.jpg",
+      "fullyBooked": true
+    },
+    {
+      "id": 7,
+      "name": "Dr. David Maina",
+      "specialty": "Neurologist",
+      "bio": "Dr. David Maina specializes in treating patients with multiple sclerosis and other autoimmune neurological disorders.",
+      "experience": "12 years",
+      "education": "MBChB (University of Nairobi), MMed (Neurology) - University of Melbourne",
+      "certifications": "Certified Neurologist",
+      "achievements": "Pioneered a new treatment for multiple sclerosis in Kenya.",
+      "imageUrl": "/images/Dr7.jpg",
+      "fullyBooked": false
+    },
+    {
+      "id": 8,
+      "name": "Dr. Angela Mwangi",
+      "specialty": "Neurologist",
+      "bio": "Dr. Angela Mwangi is a leading neurologist in the treatment of epilepsy and seizure disorders.",
+      "experience": "14 years",
+      "education": "MBChB (University of Nairobi), MMed (Neurology) - Johns Hopkins University",
+      "certifications": "Board Certified Neurologist",
+      "achievements": "Developed a seizure monitoring system for epilepsy patients.",
+      "imageUrl": "/images/Dr8.jpg",
+      "fullyBooked": false
+    }
+  ]
+},
+
+{
+    "departmentId": 7,
+    "departmentName": "Pediatrics",
+    "doctors": [
+      {
+        "id": 21,
+        "name": "Dr. Sarah Njeri",
+        "specialty": "Pediatrician",
+        "bio": "Dr. Sarah Njeri is a compassionate pediatrician with 10 years of experience in child healthcare.",
+        "experience": "10 years",
+        "education": "MBChB (University of Nairobi), MMed (Pediatrics) - University of Cape Town",
+        "certifications": "Certified Pediatrician",
+        "achievements": "Introduced a new immunization protocol in rural areas.",
+        "imageUrl": "/images/Dr21.jpg",
+        "fullyBooked": false
+      },
+      {
+        "id": 22,
+        "name": "Dr. Richard Kamau",
+        "specialty": "Pediatrician",
+        "bio": "Dr. Richard Kamau has been working with children for over 15 years, specializing in neonatal care.",
+        "experience": "15 years",
+        "education": "MBChB (Moi University), MMed (Pediatrics) - University of Toronto",
+        "certifications": "Board Certified Pediatrician",
+        "achievements": "Led neonatal intensive care units for over a decade.",
+        "imageUrl": "/images/Dr22.jpg",
+        "fullyBooked": true
+      },
+      {
+        "id": 23,
+        "name": "Dr. Fiona Wambui",
+        "specialty": "Pediatrician",
+        "bio": "Dr. Fiona Wambui is known for her gentle approach to pediatric care, specializing in child nutrition and development.",
+        "experience": "12 years",
+        "education": "MBChB (University of Nairobi), MMed (Pediatrics) - University of Washington",
+        "certifications": "Certified Pediatrician",
+        "achievements": "Developed a comprehensive nutrition program for undernourished children.",
+        "imageUrl": "/images/Dr23.jpg",
+        "fullyBooked": false
+      },
+      {
+        "id": 24,
+        "name": "Dr. Kevin Otieno",
+        "specialty": "Pediatrician",
+        "bio": "Dr. Kevin Otieno has a special focus on treating childhood infectious diseases and immunization.",
+        "experience": "11 years",
+        "education": "MBChB (Moi University), MMed (Pediatrics) - University of Oxford",
+        "certifications": "Board Certified Pediatrician",
+        "achievements": "Implemented immunization campaigns in high-risk areas.",
+        "imageUrl": "/images/Dr24.jpg",
+        "fullyBooked": false
+      }
+    ]
+  },
+  
+  {
+    "departmentId": 3,
+    "departmentName": "Orthopedics",
+    "doctors": [
+      {
+        "id": 9,
+        "name": "Dr. Samuel Otieno",
+        "specialty": "Orthopedic Surgeon",
+        "bio": "Dr. Samuel Otieno is an expert in joint replacement surgery and fracture management.",
+        "experience": "15 years",
+        "education": "MBChB (University of Nairobi), MMed (Orthopedic Surgery) - University of Manchester",
+        "certifications": "Board Certified Orthopedic Surgeon",
+        "achievements": "Performed over 1,000 successful joint replacement surgeries.",
+        "imageUrl": "/images/Dr9.jpg",
+        "fullyBooked": false
+      },
+      {
+        "id": 10,
+        "name": "Dr. Lucy Wanjiru",
+        "specialty": "Orthopedic Surgeon",
+        "bio": "Dr. Lucy Wanjiru specializes in sports injuries and complex bone fractures.",
+        "experience": "12 years",
+        "education": "MBChB (Moi University), MMed (Orthopedic Surgery) - University of Sydney",
+        "certifications": "Board Certified Orthopedic Surgeon",
+        "achievements": "Treated numerous athletes with career-threatening injuries.",
+        "imageUrl": "/images/Dr10.jpg",
+        "fullyBooked": false
+      }
+    ]
+  },
+
+{
+  "departmentId": 13,
+  "departmentName": "Gynecology",
+  "doctors": [
+    {
+      "id": 38,
+      "name": "Dr. Jack Mwangi",
+      "specialty": "Gynecologist",
+      "bio": "Dr. Jack Mwangi specializes in high-risk pregnancies and reproductive health.",
+      "experience": "10 years",
+      "education": "MBChB (University of Nairobi), MMed (Obstetrics & Gynecology) - University of Toronto",
+      "certifications": "Board Certified Gynecologist",
+      "achievements": "Successfully managed over 500 high-risk pregnancies.",
+      "imageUrl": "/images/Dr38.jpg",
+      "fullyBooked": false
+    },
+    {
+      "id": 39,
+      "name": "Dr. Carol Njeri",
+      "specialty": "Gynecologist",
+      "bio": "Dr. Carol Njeri is known for her expertise in minimally invasive gynecological surgeries.",
+      "experience": "8 years",
+      "education": "MBChB (Moi University), MMed (Obstetrics & Gynecology) - Johns Hopkins University",
+      "certifications": "Certified Gynecologic Surgeon",
+      "achievements": "Pioneered a new technique for laparoscopic surgeries.",
+      "imageUrl": "/images/Dr39.jpg",
+      "fullyBooked": true
+    }
+  ]
+},
+
+{
+    "departmentId": 8,
+    "departmentName": "General Surgery",
+    "doctors": [
+      {
+        "id": 25,
+        "name": "Dr. Michael Wekesa",
+        "specialty": "General Surgeon",
+        "bio": "Dr. Michael Wekesa is a versatile general surgeon specializing in gastrointestinal surgeries.",
+        "experience": "15 years",
+        "education": "MBChB (University of Nairobi), MMed (General Surgery) - University of Edinburgh",
+        "certifications": "Board Certified General Surgeon",
+        "achievements": "Developed a new approach to treat gastric ulcers.",
+        "imageUrl": "/images/Dr25.jpg",
+        "fullyBooked": false
+      },
+      {
+        "id": 26,
+        "name": "Dr. Evelyn Wanjiru",
+        "specialty": "General Surgeon",
+        "bio": "Dr. Evelyn Wanjiru focuses on emergency surgeries and trauma care.",
+        "experience": "12 years",
+        "education": "MBChB (Moi University), MMed (General Surgery) - Harvard University",
+        "certifications": "Certified Trauma Surgeon",
+        "achievements": "Implemented new protocols for trauma care in emergency settings.",
+        "imageUrl": "/images/Dr26.jpg",
+        "fullyBooked": true
+      },
+      {
+        "id": 27,
+        "name": "Dr. Charles Mburu",
+        "specialty": "General Surgeon",
+        "bio": "Dr. Charles Mburu has extensive experience in laparoscopic surgery and weight loss procedures.",
+        "experience": "10 years",
+        "education": "MBChB (University of Nairobi), MMed (General Surgery) - University of California, San Francisco",
+        "certifications": "Board Certified General Surgeon",
+        "achievements": "Performed over 300 bariatric surgeries.",
+        "imageUrl": "/images/Dr27.jpg",
+        "fullyBooked": false
+      }
+    ]
+  },
+
+  {
+    "departmentId": 5,
+    "departmentName": "Optometry",
+    "doctors": [
+      {
+        "id": 15,
+        "name": "Dr. Grace Otieno",
+        "specialty": "Optometrist",
+        "bio": "Dr. Grace Otieno specializes in pediatric optometry and vision therapy.",
+        "experience": "10 years",
+        "education": "BOptom (University of Nairobi), MOptom (Pediatric Optometry) - University of Melbourne",
+        "certifications": "Licensed Optometrist",
+        "achievements": "Introduced vision screening programs for schools.",
+        "imageUrl": "/images/Dr15.jpg",
+        "fullyBooked": false
+      },
+      {
+        "id": 16,
+        "name": "Dr. Mark Wambui",
+        "specialty": "Ophthalmologist",
+        "bio": "Dr. Mark Wambui is a renowned ophthalmologist specializing in cataract and LASIK surgery.",
+        "experience": "15 years",
+        "education": "MBChB (University of Nairobi), MMed (Ophthalmology) - University of Oxford",
+        "certifications": "Board Certified Ophthalmologist",
+        "achievements": "Performed over 1,000 LASIK procedures with a high success rate.",
+        "imageUrl": "/images/Dr16.jpg",
+        "fullyBooked": true
+      },
+      {
+        "id": 17,
+        "name": "Dr. Stephen Muthoni",
+        "specialty": "Optometrist",
+        "bio": "Dr. Stephen Muthoni is an expert in contact lens fitting and ocular disease management.",
+        "experience": "8 years",
+        "education": "BOptom (University of Nairobi), MOptom (Ocular Disease) - University of Sydney",
+        "certifications": "Licensed Optometrist",
+        "achievements": "Developed a new contact lens fitting technique.",
+        "imageUrl": "/images/Dr17.jpg",
+        "fullyBooked": false
+      }
+    ]
+  },
+   
+  {
+    "departmentId": 15,
+    "departmentName": "Radiology",
+    "doctors": [
+      {
+        "id": 43,
+        "name": "Dr. Esther Mutai",
+        "specialty": "Radiologist",
+        "bio": "Dr. Esther Mutai specializes in diagnostic imaging and interventional radiology.",
+        "experience": "12 years",
+        "education": "MBChB (University of Nairobi), MMed (Radiology) - University of California, Los Angeles",
+        "certifications": "Board Certified Radiologist",
+        "achievements": "Developed innovative imaging techniques for early disease detection.",
+        "imageUrl": "/images/Dr43.jpg",
+        "fullyBooked": false
+      },
+      {
+        "id": 44,
+        "name": "Dr. Nelson Ndung'u",
+        "specialty": "Radiologist",
+        "bio": "Dr. Nelson Ndung'u is known for his expertise in MRI and CT imaging.",
+        "experience": "15 years",
+        "education": "MBChB (University of Nairobi), MMed (Radiology) - University of Toronto",
+        "certifications": "Board Certified Radiologist",
+        "achievements": "Pioneered several MRI protocols for better patient outcomes.",
+        "imageUrl": "/images/Dr44.jpg",
+        "fullyBooked": true
+      }
+    ]
+  },
+         
+  {
+    "departmentId": 12,
+    "departmentName": "ENT",
+    "doctors": [
+      {
+        "id": 35,
+        "name": "Dr. Janet Wangari",
+        "specialty": "ENT Specialist",
+        "bio": "Dr. Janet Wangari specializes in treating sinus and hearing disorders.",
+        "experience": "10 years",
+        "education": "MBChB (University of Nairobi), MMed (Otorhinolaryngology) - University of Cape Town",
+        "certifications": "Board Certified ENT Specialist",
+        "achievements": "Introduced new treatment protocols for chronic sinusitis.",
+        "imageUrl": "/images/Dr35.jpg",
+        "fullyBooked": false
+      },
+      {
+        "id": 36,
+        "name": "Dr. Robert Odhiambo",
+        "specialty": "ENT Specialist",
+        "bio": "Dr. Robert Odhiambo is renowned for his expertise in head and neck surgeries.",
+        "experience": "15 years",
+        "education": "MBChB (Moi University), MMed (Otorhinolaryngology) - Johns Hopkins University",
+        "certifications": "Board Certified ENT Surgeon",
+        "achievements": "Pioneered new techniques in minimally invasive head and neck surgery.",
+        "imageUrl": "/images/Dr36.jpg",
+        "fullyBooked": true
+      },
+      {
+        "id": 37,
+        "name": "Dr. Patricia Njuguna",
+        "specialty": "ENT Specialist",
+        "bio": "Dr. Patricia Njuguna specializes in pediatric ENT conditions and surgery.",
+        "experience": "8 years",
+        "education": "MBChB (University of Nairobi), MMed (Otorhinolaryngology) - University of Sydney",
+        "certifications": "Board Certified Pediatric ENT Specialist",
+        "achievements": "Developed a new approach for treating ear infections in children.",
+        "imageUrl": "/images/Dr37.jpg",
+        "fullyBooked": false
+      }
+    ]
+  },
+  
+  {
+    "departmentId": 10,
+    "departmentName": "Oncology",
+    "doctors": [
+      {
+        "id": 30,
+        "name": "Dr. Alice Muriuki",
+        "specialty": "Oncologist",
+        "bio": "Dr. Alice Muriuki specializes in breast cancer and gynecological malignancies.",
+        "experience": "12 years",
+        "education": "MBChB (University of Nairobi), MMed (Oncology) - University of Chicago",
+        "certifications": "Board Certified Oncologist",
+        "achievements": "Implemented new treatment protocols for breast cancer.",
+        "imageUrl": "/images/Dr30.jpg",
+        "fullyBooked": false
+      },
+      {
+        "id": 31,
+        "name": "Dr. Samuel Njeru",
+        "specialty": "Oncologist",
+        "bio": "Dr. Samuel Njeru is known for his work in hematology and solid tumors.",
+        "experience": "15 years",
+        "education": "MBChB (Moi University), MMed (Oncology) - Stanford University",
+        "certifications": "Board Certified Hematologist/Oncologist",
+        "achievements": "Pioneered clinical trials for new cancer therapies.",
+        "imageUrl": "/images/Dr31.jpg",
+        "fullyBooked": true
+      },
+      {
+        "id": 32,
+        "name": "Dr. Linda Mwangi",
+        "specialty": "Oncologist",
+        "bio": "Dr. Linda Mwangi specializes in palliative care and pain management for cancer patients.",
+        "experience": "8 years",
+        "education": "MBChB (University of Nairobi), MMed (Palliative Medicine) - University of Melbourne",
+        "certifications": "Certified Palliative Care Specialist",
+        "achievements": "Developed new protocols for pain management in cancer care.",
+        "imageUrl": "/images/Dr32.jpg",
+        "fullyBooked": false
+      }
+    ]
+  },
+
+{
+  "departmentId": 11,
+  "departmentName": "Urology",
+  "doctors": [
+    {
+      "id": 33,
+      "name": "Dr. Ibrahim Muthoni",
+      "specialty": "Urologist",
+      "bio": "Dr. Ibrahim Muthoni specializes in robotic urological surgeries.",
+      "experience": "10 years",
+      "education": "MBChB (University of Nairobi), MMed (Urology) - University of California, San Francisco",
+      "certifications": "Board Certified Urologist",
+      "achievements": "Pioneered robotic-assisted prostate surgeries.",
+      "imageUrl": "/images/Dr33.jpg",
+      "fullyBooked": false
+    },
+    {
+      "id": 34,
+      "name": "Dr. Sarah Wambui",
+      "specialty": "Urologist",
+      "bio": "Dr. Sarah Wambui is known for her expertise in female urology and urinary incontinence.",
+      "experience": "12 years",
+      "education": "MBChB (Moi University), MMed (Urology) - Johns Hopkins University",
+      "certifications": "Board Certified Urologist",
+      "achievements": "Developed innovative treatments for urinary incontinence.",
+      "imageUrl": "/images/Dr34.jpg",
+      "fullyBooked": true
+    }
+  ]
+},
+
+{
+    "departmentId": 4,
+    "departmentName": "Dentistry",
+    "doctors": [
+      {
+        "id": 12,
+        "name": "Dr. Paul Muriuki",
+        "specialty": "Dentist",
+        "bio": "Dr. Paul Muriuki specializes in cosmetic dentistry and oral surgery.",
+        "experience": "15 years",
+        "education": "BDS (University of Nairobi), MDS (Cosmetic Dentistry) - University of California, Los Angeles",
+        "certifications": "Board Certified Dentist",
+        "achievements": "Implemented new techniques in cosmetic restorations.",
+        "imageUrl": "/images/Dr12.jpg",
+        "fullyBooked": false
+      },
+      {
+        "id": 13,
+        "name": "Dr. Alice Njuguna",
+        "specialty": "Dentist",
+        "bio": "Dr. Alice Njuguna focuses on pediatric dentistry and orthodontics.",
+        "experience": "8 years",
+        "education": "BDS (Moi University), MDS (Pediatric Dentistry) - University of Melbourne",
+        "certifications": "Certified Pediatric Dentist",
+        "achievements": "Developed new methods for treating dental anxiety in children.",
+        "imageUrl": "/images/Dr13.jpg",
+        "fullyBooked": true
+      },
+      {
+        "id": 14,
+        "name": "Dr. Brian Kamau",
+        "specialty": "Dentist",
+        "bio": "Dr. Brian Kamau specializes in periodontics and dental implants.",
+        "experience": "10 years",
+        "education": "BDS (University of Nairobi), MDS (Periodontics) - University of Toronto",
+        "certifications": "Board Certified Periodontist",
+        "achievements": "Pioneered techniques in minimally invasive gum surgery.",
+        "imageUrl": "/images/Dr14.jpg",
+        "fullyBooked": false
+      }
+    ]
+  },
+
+ {
+  "departmentId": 6,
+  "departmentName": "Dermatology",
+  "doctors": [
+    {
+      "id": 18,
+      "name": "Dr. Josephine Njeri",
+      "specialty": "Dermatologist",
+      "bio": "Dr. Josephine Njeri specializes in skin disorders and cosmetic dermatology.",
+      "experience": "10 years",
+      "education": "MBChB (University of Nairobi), MMed (Dermatology) - University of Cape Town",
+      "certifications": "Board Certified Dermatologist",
+      "achievements": "Developed new treatments for acne and rosacea.",
+      "imageUrl": "/images/Dr18.jpg",
+      "fullyBooked": false
+    },
+    {
+      "id": 19,
+      "name": "Dr. Peter Kariuki",
+      "specialty": "Dermatologist",
+      "bio": "Dr. Peter Kariuki focuses on skin cancer treatment and dermatologic surgery.",
+      "experience": "12 years",
+      "education": "MBChB (Moi University), MMed (Dermatology) - University of Chicago",
+      "certifications": "Board Certified Dermatologist",
+      "achievements": "Pioneered skin cancer awareness campaigns in local communities.",
+      "imageUrl": "/images/Dr19.jpg",
+      "fullyBooked": true
+    },
+    {
+      "id": 20,
+      "name": "Dr. Victor Onyango",
+      "specialty": "Dermatologist",
+      "bio": "Dr. Victor Onyango specializes in pediatric dermatology and skin allergies.",
+      "experience": "8 years",
+      "education": "MBChB (University of Nairobi), MMed (Dermatology) - University of Melbourne",
+      "certifications": "Certified Pediatric Dermatologist",
+      "achievements": "Implemented new allergy testing methods for skin conditions.",
+      "imageUrl": "/images/Dr20.jpg",
+      "fullyBooked": false
+    }
+  ]
+},
+
+{
+    "departmentId": 14,
+    "departmentName": "Nephrology",
+    "doctors": [
+      {
+        "id": 40,
+        "name": "Dr. Benjamin Ndung'u",
+        "specialty": "Nephrologist",
+        "bio": "Dr. Benjamin Ndung'u specializes in chronic kidney disease and dialysis management.",
+        "experience": "15 years",
+        "education": "MBChB (University of Nairobi), MMed (Nephrology) - University of California, San Francisco",
+        "certifications": "Board Certified Nephrologist",
+        "achievements": "Pioneered new treatment protocols for dialysis patients.",
+        "imageUrl": "/images/Dr40.jpg",
+        "fullyBooked": false
+      },
+      {
+        "id": 41,
+        "name": "Dr. Mary Akinyi",
+        "specialty": "Nephrologist",
+        "bio": "Dr. Mary Akinyi is known for her expertise in kidney transplants.",
+        "experience": "10 years",
+        "education": "MBChB (Moi University), MMed (Nephrology) - Johns Hopkins University",
+        "certifications": "Board Certified Nephrologist",
+        "achievements": "Successfully performed over 50 kidney transplants.",
+        "imageUrl": "/images/Dr41.jpg",
+        "fullyBooked": true
+      },
+      {
+        "id": 42,
+        "name": "Dr. Laura Otieno",
+        "specialty": "Nephrologist",
+        "bio": "Dr. Laura Otieno specializes in pediatric nephrology.",
+        "experience": "8 years",
+        "education": "MBChB (University of Nairobi), MMed (Pediatric Nephrology) - University of Sydney",
+        "certifications": "Certified Pediatric Nephrologist",
+        "achievements": "Developed new protocols for managing nephrotic syndrome in children.",
+        "imageUrl": "/images/Dr42.jpg",
+        "fullyBooked": false
+      }
+    ]
+  },
+  
+  {
+    "departmentId": 9,
+    "departmentName": "Psychiatry",
+    "doctors": [
+      {
+        "id": 28,
+        "name": "Dr. Jacob Wanjiru",
+        "specialty": "Psychiatrist",
+        "bio": "Dr. Jacob Wanjiru specializes in mood disorders and cognitive therapy.",
+        "experience": "10 years",
+        "education": "MBChB (University of Nairobi), MMed (Psychiatry) - University of Cape Town",
+        "certifications": "Board Certified Psychiatrist",
+        "achievements": "Developed community mental health programs.",
+        "imageUrl": "/images/Dr28.jpg",
+        "fullyBooked": false
+      },
+      {
+        "id": 29,
+        "name": "Dr. Lillian Kamau",
+        "specialty": "Psychiatrist",
+        "bio": "Dr. Lillian Kamau focuses on child and adolescent psychiatry.",
+        "experience": "12 years",
+        "education": "MBChB (Moi University), MMed (Child Psychiatry) - Stanford University",
+        "certifications": "Board Certified Child Psychiatrist",
+        "achievements": "Implemented new treatment protocols for ADHD.",
+        "imageUrl": "/images/Dr29.jpg",
+        "fullyBooked": true
+      }
+    ]
+  }     
+
+  ]
+  
