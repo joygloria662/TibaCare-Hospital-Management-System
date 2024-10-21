@@ -8,7 +8,7 @@ function Gallery({ images }){
                 setImageIndex(prevIndex => (prevIndex + 1)%images.length)
             }, 5000);
         return ()=>clearInterval(interval);
-    }, [images.length, 5000])
+    }, [images.length])
     
     return (
         <div className="gallery">

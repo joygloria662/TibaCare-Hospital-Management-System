@@ -1,4 +1,4 @@
-from flask import Flask, request, session, make_response
+from flask import Flask, request, session, make_response, jsonify
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from flask_restful import Api, Resource
@@ -22,8 +22,25 @@ api = Api(app)
 bcrypt = Bcrypt(app)
 CORS(app, supports_credentials=True, resources={r"/*": {"origins": "http://localhost:4000"}})
 
-
 db.init_app(app)
+
+# Department List
+class DepartmentList(Resource):
+    def get(self):
+        departments_dict = [department.to_dict() for department in Department.query.all()]
+        return make_response(departments_dict, 200)
+
+# Doctors by Department
+@app.route('/api/departments/<int:department_id>/doctors')
+def get_doctors_by_department(department_id):
+    doctors = Doctor.query.filter_by(department_id=department_id).all()
+    return jsonify([doctor.to_card_dict() for doctor in doctors])
+
+# Doctor Profile Information
+@app.route('/api/doctors/<int:doctor_id>')
+def get_doctor_profile(doctor_id):
+    doctor = Doctor.query.get_or_404(doctor_id)
+    return jsonify(doctor.to_profile_dict())
 
 class DoctorSignup(Resource):
     def post(self):
@@ -48,7 +65,7 @@ class DoctorSignup(Resource):
             certifications=data.get('certifications'),
             specialty=data.get('specialty'),
             image=image_path,
-            department_id = data.get('department'),
+            department_id=data.get('department'),
             password=bcrypt.generate_password_hash(data.get('password')).decode('utf-8')
         )
 
@@ -116,8 +133,6 @@ class PatientLogin(Resource):
         else:
             return {"error": "Invalid email or password"}, 401
 
-
-
 class Logout(Resource):
     def delete(self):
         session.pop('user_id', None)
@@ -142,29 +157,13 @@ class CheckSession(Resource):
             else:
                 return {"error": "User not found"}, 404
         return {"error": "Unauthorized"}, 401
-    
-class DoctorById(Resource):
-    def get(self, id):
-        doctor = Doctor.query.filter_by(id=id).first()
-        return make_response(doctor.to_dict(),200)
 
-class DepartmentList(Resource):
-    def get(self):
-        departments_dict =[department.to_dict() for department in Department.query.all()]
-        
-        return make_response(departments_dict, 200)
-        
-
-
+# Register API Resources
 api.add_resource(DoctorSignup, '/doctorsignup', endpoint='doctorsignup')
 api.add_resource(DoctorLogin, '/doctorlogin', endpoint='doctorlogin')
 api.add_resource(Logout, '/logout', endpoint=None)
 api.add_resource(CheckSession, '/check_session', endpoint='check_session')
-api.add_resource(DepartmentList, '/departments', endpoint='departments')
-api.add_resource(PatientSignup, '/patientsignup', endpoint='patientsignup')
-api.add_resource(PatientLogin, '/patientlogin', endpoint='patientlogin')
-api.add_resource(DoctorById, '/doctor/<int:id>')
-
+api.add_resource(DepartmentList, '/api/departments', endpoint='departments')  # Updated endpoint
 
 if __name__ == "__main__":
     app.run(port=5555)

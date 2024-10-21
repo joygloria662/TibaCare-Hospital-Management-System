@@ -2,13 +2,14 @@ import React from "react";
 import App from "./App";
 import Login from "./Login";
 import Departments from "./Departments";
-import PatientDashboard from './PatientDashboard'
+import Doctors from "./Doctors"; // Import the Doctors component
+import PatientDashboard from './PatientDashboard';
 import About from "./About";
 import Contact from "./Contact";
 import Signup from "./Signup";
 import DoctorDashboard from "./DoctorDashboard";
+import DoctorProfile from "./DoctorProfile"; // Import DoctorProfile
 import PrivateRoute from "./PrivateRoute";
-
 
 const routes = [
     {
@@ -16,11 +17,11 @@ const routes = [
         element: <App />
     },
     {
-        path: 'about',
+        path: '/about',
         element: <About />
     },
     {
-        path: 'contact',
+        path: '/contact',
         element: <Contact />
     },
     {
@@ -30,6 +31,10 @@ const routes = [
     {
         path: "/departments",
         element: <Departments />
+    },
+    {
+        path: "/departments/:departmentId", // Route for doctors in a specific department
+        element: <Doctors /> // Use Doctors component here
     },
     {
         path: '/signup',
@@ -42,8 +47,11 @@ const routes = [
     {
         path: '/doctordashboard',
         element: <PrivateRoute element={<DoctorDashboard />} />  // Protect doctor dashboard
+    },
+    {
+        path: '/doctors/:doctorId/profile', // Route for doctor profile
+        element: <DoctorProfile /> // Render DoctorProfile component
     }
-]
-
+];
 
 export default routes;

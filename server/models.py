@@ -1,4 +1,3 @@
-
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_serializer import SerializerMixin as sm
 import datetime
@@ -40,7 +39,6 @@ class Patient(db.Model, sm):
 class Appointment(db.Model, sm):
     __tablename__ = 'appointments'
 
-    # Avoid circular references by excluding patient and doctor relationships
     serialize_rules = ("-patient.appointments", "-doctor.appointments")
 
     id = db.Column(db.Integer, primary_key=True)
@@ -66,7 +64,6 @@ class Appointment(db.Model, sm):
     def __repr__(self):
         return f"<Appointment {self.patient_id} {self.doctor_id}>"
 
-
 class Department(db.Model, sm):
     __tablename__ = 'departments'
 
@@ -88,35 +85,35 @@ class Department(db.Model, sm):
     def __repr__(self):
         return f"<Department {self.name}>"
 
-
 class Doctor(db.Model, sm):
     __tablename__ = "doctors"
 
-    # Exclude appointments and patients to prevent circular references
     serialize_rules = ("-appointments.doctor", "-appointments.patient", "-patients")
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String)
     doctorId = db.Column(db.String)
-    first_name = db.Column(db.String)
-    last_name = db.Column(db.String)
-    email = db.Column(db.String)
-    bio = db.Column(db.String)
+    first_name = db.Column(db.String(50))
+    last_name = db.Column(db.String(50))
+    email = db.Column(db.String, unique=True, nullable=False)
+    bio = db.Column(db.Text)
     education = db.Column(db.String)
     certifications = db.Column(db.String)
-    specialty = db.Column(db.String)
-    image = db.Column(db.String)
+    specialty = db.Column(db.String(50))
+    image = db.Column(db.String(200))
     department_id = db.Column(db.Integer, db.ForeignKey("departments.id"))
-    password = db.Column(db.String)
+    password = db.Column(db.String, nullable=False)
+    years_of_experience = db.Column(db.Integer)  # New field for years of experience
+    achievements = db.Column(db.String)  # New field for achievements
 
     appointments = db.relationship("Appointment", back_populates="doctor")
     department = db.relationship("Department", back_populates="doctors")
-    patients = association_proxy("appointments", "patient", creator=lambda patient_obj: Appointment(patient=patient_obj))
 
     def to_dict(self):
         return {
             "id": self.id,
             "title": self.title,
+            "doctorId": self.doctorId,
             "first_name": self.first_name,
             "last_name": self.last_name,
             "email": self.email,
@@ -126,7 +123,37 @@ class Doctor(db.Model, sm):
             "specialty": self.specialty,
             "image": self.image,
             "department_id": self.department_id,
+            "years_of_experience": self.years_of_experience,  # Include years of experience
+            "achievements": self.achievements,  # Include achievements
+        }
+
+    def to_card_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "specialty": self.specialty,
+            "image": self.image,
+        }
+
+    def to_profile_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "doctorId": self.doctorId,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "email": self.email,
+            "bio": self.bio,
+            "education": self.education,
+            "certifications": self.certifications,
+            "specialty": self.specialty,
+            "image": self.image,
+            "department_id": self.department_id,
+            "years_of_experience": self.years_of_experience,  # Include years of experience
+            "achievements": self.achievements,  # Include achievements
         }
 
     def __repr__(self):
-        return f'<Doctor {self.first_name} {self.last_name} {self.email}>'
+        return f"<Doctor {self.first_name} {self.last_name}>"
