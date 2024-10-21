@@ -8,7 +8,7 @@ import About from "./About";
 import Contact from "./Contact";
 import Signup from "./Signup";
 import DoctorDashboard from "./DoctorDashboard";
-import DoctorProfile from "./DoctorProfile"; // Import DoctorProfile
+import DoctorProfileContainer from "./DoctorProfileContainer"; // Import DoctorProfileContainer
 import PrivateRoute from "./PrivateRoute";
 
 const routes = [
@@ -50,7 +50,7 @@ const routes = [
     },
     {
         path: '/doctors/:doctorId/profile', // Route for doctor profile
-        element: <DoctorProfile /> // Render DoctorProfile component
+        element: <DoctorProfileContainer /> // Render DoctorProfileContainer component
     }
 ];
 

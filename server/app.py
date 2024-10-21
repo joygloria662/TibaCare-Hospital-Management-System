@@ -37,7 +37,7 @@ def get_doctors_by_department(department_id):
     return jsonify([doctor.to_card_dict() for doctor in doctors])
 
 # Doctor Profile Information
-@app.route('/api/doctors/<int:doctor_id>')
+@app.route('/api/doctors/<int:doctor_id>', methods=['GET'])
 def get_doctor_profile(doctor_id):
     doctor = Doctor.query.get_or_404(doctor_id)
     return jsonify(doctor.to_profile_dict())
