@@ -31,6 +31,7 @@ class Patient(db.Model, sm):
             "gender": self.gender,
             "email": self.email,
             "phone_number": self.phone_number,
+            "medical_records": [appointment.medical_records for appointment in self.appointments]
         }
 
     def __repr__(self):
