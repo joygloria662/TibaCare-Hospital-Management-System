@@ -161,7 +161,7 @@ class PatientById(Resource):
         patient = Patient.query.filter_by(id=id).first()
         return make_response(patient.to_dict(),200)
         
-class AppointmentResource(Resource):
+class Appointment(Resource):
     def get(self, appointment_id=None):
         # If appointment_id is provided, fetch a single appointment
         if appointment_id:
@@ -192,7 +192,7 @@ api.add_resource(PatientSignup, '/patientsignup', endpoint='patientsignup')
 api.add_resource(PatientLogin, '/patientlogin', endpoint='patientlogin')
 api.add_resource(DoctorById, '/doctor/<int:id>')
 api.add_resource(PatientById, '/patient/<int:id>')
-api.add_resource(AppointmentResource, '/appointments', '/appointments/<int:appointment_id>')
+api.add_resource(Appointment, '/appointments', '/appointments/<int:appointment_id>')
 
 
 
