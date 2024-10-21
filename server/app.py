@@ -1,8 +1,10 @@
-from flask import Flask, request, session, make_response, jsonify
+from flask import Flask, request, session, make_response,jsonify
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from flask_restful import Api, Resource
 from flask_cors import CORS
+from sqlalchemy.orm import joinedload
+
 from models import db, Doctor, Department, Patient, Appointment
 from werkzeug.utils import secure_filename
 import os
@@ -157,13 +159,59 @@ class CheckSession(Resource):
             else:
                 return {"error": "User not found"}, 404
         return {"error": "Unauthorized"}, 401
+    
+class DoctorById(Resource):
+    def get(self, id):
+        doctor = Doctor.query.filter_by(id=id).first()
+        return make_response(doctor.to_dict(),200)
+
+class DepartmentList(Resource):
+    def get(self):
+        departments_dict =[department.to_dict() for department in Department.query.all()]
+        
+        return make_response(departments_dict, 200)
+    
+class PatientById(Resource):
+    def get(self, id):
+        patient = Patient.query.filter_by(id=id).first()
+        return make_response(patient.to_dict(),200)
+        
+class Appointment(Resource):
+    def get(self, appointment_id=None):
+        # If appointment_id is provided, fetch a single appointment
+        if appointment_id:
+            appointment = Appointment.query.options(
+                joinedload(Appointment.patient), joinedload(Appointment.doctor)
+            ).filter_by(id=appointment_id).first()
+
+            if not appointment:
+                return {"error": "Appointment not found"}, 404
+
+            return jsonify(appointment.to_dict())
+
+        # Otherwise, return all appointments
+        appointments = Appointment.query.options(
+            joinedload(Appointment.patient), joinedload(Appointment.doctor)
+        ).all()
+
+        return jsonify([appointment.to_dict() for appointment in appointments])
 
 # Register API Resources
 api.add_resource(DoctorSignup, '/doctorsignup', endpoint='doctorsignup')
 api.add_resource(DoctorLogin, '/doctorlogin', endpoint='doctorlogin')
 api.add_resource(Logout, '/logout', endpoint=None)
 api.add_resource(CheckSession, '/check_session', endpoint='check_session')
+
+api.add_resource(DepartmentList, '/departments', endpoint='departments')
+api.add_resource(PatientSignup, '/patientsignup', endpoint='patientsignup')
+api.add_resource(PatientLogin, '/patientlogin', endpoint='patientlogin')
+api.add_resource(DoctorById, '/doctor/<int:id>')
+api.add_resource(PatientById, '/patient/<int:id>')
+api.add_resource(Appointment, '/appointments', '/appointments/<int:appointment_id>')
+
+
 api.add_resource(DepartmentList, '/api/departments', endpoint='departments')  # Updated endpoint
+
 
 if __name__ == "__main__":
     app.run(port=5555)
