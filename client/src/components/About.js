@@ -15,6 +15,16 @@ function About() {
     autoplaySpeed: 3000,
   };
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  };
+
   return (
     <div>
       <section className="about-section">
@@ -73,3 +83,4 @@ function About() {
 }
 
 export default About;
+
