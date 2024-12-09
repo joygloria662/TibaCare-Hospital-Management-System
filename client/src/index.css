@@ -36,7 +36,7 @@ code {
   width: 90vw;
   justify-content: center;
   align-content: center;
-  background-color: #fdfdfd; 
+  background-color: #e21a1a; 
 }
 .infoCards {
   display: flex;
@@ -52,7 +52,7 @@ code {
   height: 16em;
   width: 14em;
   margin: 3em 3em;
-  background-color: #ffffff;
+  background-color: #f1e320;
   border-radius: 1em;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   justify-content: center;
@@ -64,7 +64,7 @@ code {
   width: 90vw;
   justify-content: center;
   align-content: center;
-  background-color: #145da0; 
+  background-color: #2ba014; 
 }
 .aboutCards {
   display: flex;
@@ -100,7 +100,7 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #ffffff;
+  background-color: #9c1ceb;
   padding: 50px;
   border-radius: 10px;
   max-width: 500px;
